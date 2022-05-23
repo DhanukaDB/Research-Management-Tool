@@ -61,7 +61,7 @@ router.route("/").get((req,res) => {
 })
 
 
-//update  using an ID
+//update  using doc ID
 router.route("/update/:id").put(async (req, res) => {
       let docID = req.params.id;
       const {title,groupno,task1, task2,task3,total} = req.body;
@@ -86,7 +86,7 @@ router.route("/update/:id").put(async (req, res) => {
 
 
 
-//Delete  Using an Id
+//Delete  Using doc Id
 router.route("/delete/:id").delete(async (req, res) => {
       let docID = req.params.id;
       
