@@ -3,7 +3,7 @@ let EvaluateTopic = require("../models/Topics");
 
 
 
-//Add marks for documents
+//Add feedback for topics
 router.route("/add").post((req,res) => {
     const groupno = req.body.groupno;
     const topic = req.body.topic;
@@ -57,7 +57,7 @@ router.route("/").get((req,res) => {
 })
 
 
-//update  using an ID
+//update  using topic ID
 router.route("/update/:id").put(async (req, res) => {
       let topicID = req.params.id;
       const {groupno,topic, staus,feedback} = req.body;
@@ -80,7 +80,7 @@ router.route("/update/:id").put(async (req, res) => {
 
 
 
-//Delete  Using an Id
+//Delete  
 router.route("/delete/:id").delete(async (req, res) => {
       let topicID = req.params.id;
       

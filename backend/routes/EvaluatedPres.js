@@ -3,7 +3,7 @@ let Evapre = require("../models/EvaluatedPresentations");
 
 
 
-//Add marks for documents
+//Add marks for presenations
 router.route("/add").post((req,res) => {
     const title = req.body.title;
     const groupno = req.body.groupno;
@@ -59,7 +59,7 @@ router.route("/").get((req,res) => {
 })
 
 
-//update  using an ID
+//update  using  ID
 router.route("/update/:id").put(async (req, res) => {
       let preID = req.params.id;
       const {title,groupno,task1, task2,total} = req.body;
@@ -83,7 +83,7 @@ router.route("/update/:id").put(async (req, res) => {
 
 
 
-//Delete  Using an Id
+//Delete  Using  Id
 router.route("/delete/:id").delete(async (req, res) => {
       let preID = req.params.id;
       
