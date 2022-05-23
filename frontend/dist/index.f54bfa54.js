@@ -25127,7 +25127,62 @@ $RefreshReg$(_c, "Main");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./src/components/Navbar/Navbar":"2z6Hi"}],"gkKU3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./src/components/Navbar/Navbar":"2z6Hi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"2z6Hi":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f368 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$f368.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _navbarCss = require("./navbar.css");
+function Navbar() {
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        className: "nav",
+        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+            className: "nav-item",
+            children: [
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+                    children: "Chat"
+                }, void 0, false, {
+                    fileName: "src/components/Navbar/Navbar.jsx",
+                    lineNumber: 8,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+                    children: "Evaluations Documents"
+                }, void 0, false, {
+                    fileName: "src/components/Navbar/Navbar.jsx",
+                    lineNumber: 9,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/Navbar/Navbar.jsx",
+            lineNumber: 7,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/components/Navbar/Navbar.jsx",
+        lineNumber: 6,
+        columnNumber: 5
+    }, this);
+}
+exports.default = Navbar;
+_c = Navbar;
+var _c;
+$RefreshReg$(_c, "Navbar");
+
+  $parcel$ReactRefreshHelpers$f368.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./navbar.css":"ivxpB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ivxpB":[function() {},{}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -25277,52 +25332,6 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"2z6Hi":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$f368 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f368.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _navbarCss = require("./navbar.css");
-function Navbar() {
-    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-        className: "nav",
-        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-            className: "nav-item",
-            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-                children: "Chat"
-            }, void 0, false, {
-                fileName: "src/components/Navbar/Navbar.jsx",
-                lineNumber: 8,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
-            fileName: "src/components/Navbar/Navbar.jsx",
-            lineNumber: 7,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
-        fileName: "src/components/Navbar/Navbar.jsx",
-        lineNumber: 6,
-        columnNumber: 5
-    }, this);
-}
-exports.default = Navbar;
-_c = Navbar;
-var _c;
-$RefreshReg$(_c, "Navbar");
-
-  $parcel$ReactRefreshHelpers$f368.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./navbar.css":"ivxpB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ivxpB":[function() {},{}],"giGSC":[function() {},{}]},["kn9T2","3feGU","aSihg"], "aSihg", "parcelRequire10c2")
+},{"react-refresh/runtime":"786KC"}],"giGSC":[function() {},{}]},["kn9T2","3feGU","aSihg"], "aSihg", "parcelRequire10c2")
 
 //# sourceMappingURL=index.f54bfa54.js.map

@@ -24,6 +24,18 @@ connection.once("open", () => {
   console.log("Mongodb connection success!");
 });
 
+//Evaluated docs Router
+const evaluatedDocRouter = require("./routes/EvaluatedDocs");
+app.use("/evaluateDocs", evaluatedDocRouter);
+//Evaluated Presentations Router
+const evaluatedPreRouter = require("./routes/EvaluatedPres");
+app.use("/EvaluatedPres", evaluatedPreRouter);
+//Evaluated Topics Router
+const evaluatedTopicsRouter = require("./routes/EvaluatedTopics");
+app.use("/EvaluateTopics", evaluatedTopicsRouter);
+
 app.listen(port, (error) => {
   console.log(`Server running on port ${port}`);
 });
+
+
