@@ -7,12 +7,6 @@ const adminSchema = new Schema({
         type : String,
         require: true
   },
-
-   email :{
-         type: String,
-         require: true
-   },
-   
    phoneno : {
     type: Number,
     require: true

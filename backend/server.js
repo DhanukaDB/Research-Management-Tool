@@ -24,6 +24,10 @@ connection.once("open", () => {
   console.log("Mongodb connection success!");
 });
 
+const authRoutes = require("./routes/authenticationRoutes");
+app.use("/auth", authRoutes);
+
+
 app.listen(port, (error) => {
   console.log(`Server running on port ${port}`);
 });
