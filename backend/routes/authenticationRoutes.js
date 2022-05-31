@@ -3,23 +3,27 @@ const router = express.Router();
 
 // import controllers
 const {
-  register,
+  registerStudent,
   login,
   forgotpassword,
   resetpassword,
+  registerStaff,
+  registerAdmin,
   
 } = require("../controllers/authenticationController");
  
 //register Routes
-//router.route("/admin").post(registerAdmin);
-router.route("/register").post(register);
+
+router.route("/registerstudent").post(registerStudent);
+router.route("/registerstaff").post(registerStaff);
+router.route("/registeradmin").post(registerAdmin);
 
 //login routes
-router.route("/login").post(login);
+//router.route("/login").post(login);
 
 
-router.route("/forgotpassword").post(forgotpassword);
+//router.route("/forgotpassword").post(forgotpassword);
 
-router.route("/resetpassword/:resetToken").post(resetpassword);
+//router.route("/resetpassword/:resetToken").post(resetpassword);
 
 module.exports = router;

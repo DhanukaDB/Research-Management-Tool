@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
+const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const adminSchema = new Schema({
+  role: {
+    type: String,
+    default:"admin",
+
+  },
 
   username : {
         type : String,
@@ -20,7 +26,7 @@ const adminSchema = new Schema({
 })
 
 //by using "pre save" we run this code segment before mongoose save data on db
-Admin.pre("save", async function (next) {
+adminSchema.pre("save", async function (next) {
       //check whether the password has already been hashed or not by using isModified
       if (!this.isModified("password")) {
         next();
@@ -34,11 +40,11 @@ Admin.pre("save", async function (next) {
     });
     
 //to compare hashed passwords in login scenarios
-Admin.methods.matchPasswords = async function (password) {
+adminSchema.methods.matchPasswords = async function (password) {
       return await bcrypt.compare(password, this.password); //password refers to user providing one and this.password refers to one that get from db
     };
     
-Admin.methods.getSignedToken = function () {
+adminSchema.methods.getSignedToken = function () {
       return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRE,
       });

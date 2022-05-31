@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
+const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
 
+  role: {
+    type: String,
+    default:"student",
+
+  },
   studentID : {
-        type : String,
-        require: true
+   type : String,
+   unique: true,
+   require: true
   },
   name :{
     type: String,
@@ -14,6 +21,7 @@ const studentSchema = new Schema({
 
    email :{
          type: String,
+         unique: true,
          require: true
    },
    
@@ -26,27 +34,16 @@ const studentSchema = new Schema({
     type: String,
     require: true
  },
-   profilePicture: {
-      imagePublicId: {
-        type: String,
-        required: [
-          true,
-          "Error with cloudinary service! Can not find the paper URL.",
-        ],
-      },
-      imageSecURL: {
-        type: String,
-        required: [
-          true,
-          "Error with cloudinary service! Can not find the paper URL.",
-        ],
-      },
-    },
+
+  resetPasswordToken : String,
+  resetPasswordExpire : Date,
+
+  
 })
 
-//by using "pre save" we run this code segment before mongoose save data on db
+//pre save runs before save data on Mongodb
 studentSchema.pre("save", async function (next) {
-      //check whether the password has already been hashed or not by using isModified
+      //checking whether the password isModified
       if (!this.isModified("password")) {
         next();
       }
