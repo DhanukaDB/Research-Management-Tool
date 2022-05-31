@@ -1,12 +1,10 @@
 const Admin = require("../models/Admin");
-const Staff = require("../models/Staff");
-const Student = require("../models/Student");
 
 exports.getAdmin = async (req, res) => {
     const id = req.user._id;
   
     try {
-      const Admin = await AdminModel.findById({ _id: id });
+      const Admin = await Admin.findById({ _id: id });
       res.status(200).send({ Admin: Admin });
   
       return true;
@@ -26,7 +24,7 @@ exports.getAdmin = async (req, res) => {
         const uploadedResponse = await cloudinary.uploader.upload(fileEnc, {
           upload_preset: "Newsletter_Covers",
         });
-        Admin = await AdminModel.findByIdAndUpdate(
+        Admin = await Admin.findByIdAndUpdate(
           req.user._id,
           {
             $set: {
@@ -45,7 +43,7 @@ exports.getAdmin = async (req, res) => {
           }
         );
       } else {
-        Admin = await AdminModel.findByIdAndUpdate(
+        Admin = await Admin.findByIdAndUpdate(
           req.user._id,
           {
             $set: {
