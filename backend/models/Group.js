@@ -4,161 +4,65 @@ const Schema = mongoose.Schema;
 const groupSchema = new Schema({
 
 
-Student1: {
-    studentID : {
+
+    studentID1 : {
         type : String,
         unique: true,
         require: true
        },
 
-    name :{
-        type: String,
-        require: true
-       },
-     
-    email:{
-        type: String,
-        unique: true,
-        require: true
-        },
-    
-   
-    contactNumber : {
-        type: Number,
-        require: true
-        },
-    },
 
 
-
-    Student2: {
-        studentID : {
+    studentID2 : {
             type : String,
             unique: true,
             require: true
            },
     
-        name :{
-            type: String,
-            require: true
-           },
-         
-        email:{
-            type: String,
+        
+
+    studentID3 : {
+            type : String,
             unique: true,
             require: true
-            },
-        
-       
-        contactNumber : {
-            type: Number,
-            require: true
-            },
-        },
-
-
-
-        Student3: {
-            studentID : {
-                type : String,
-                unique: true,
-                require: true
                },
         
-            name :{
-                type: String,
-                require: true
-               },
-             
-            email:{
-                type: String,
-                unique: true,
-                require: true
-                },
-            
            
-            contactNumber : {
-                type: Number,
-                require: true
+
+          
+    studentID4 : {
+            type : String,
+            unique: true,
+            require: true
                 },
-            },
-
-
-
-            Student4: {
-                studentID : {
-                    type : String,
-                    unique: true,
-                    require: true
-                   },
             
-                name :{
-                    type: String,
-                    require: true
-                   },
-                 
-                email:{
-                    type: String,
-                    unique: true,
-                    require: true
-                    },
                 
-               
-                contactNumber : {
-                    type: Number,
-                    require: true
-                    },
-                },
-
     field: {
 
         type: String,
         require: true
     },        
 
-    Supervisor: {
-            staffID : {
-                    type : String,
-                    unique: true,
-                    require: true
-              },
-              name :{
+   
+   
+     supervisorName :{
                 type: String,
                 require: true
             },
             
-               email :{
-                     type: String,
-                     unique: true,
-                     require: true
-               },          
-          },
-
-     
-   CoSupervior: {
-
-            staffID : {
-                type : String,
-                unique: true,
-                require: true
-               },
-            name :{
+                        
+    
+    coSupName :{
                 type: String,
                 require: true
                },
         
-            email :{
-                 type: String,
-                 unique: true,
-                 require: true
-               },
-
-
-        topic : {
+           
+    topic : {
             type:String,
             require: true
         }       
- }
+ 
 })
 
 const Group = mongoose.model("Group", groupSchema);
