@@ -24,6 +24,12 @@ connection.once("open", () => {
   console.log("Mongodb connection success!");
 });
 
+
+// const authRoutes = require("./routes/authenticationRoutes");
+// app.use("/auth", authRoutes);
+
+app.use('/api/auth', require('./routes/authenticationRoutes'));
+
 //Evaluated docs Router
 const evaluatedDocRouter = require("./routes/EvaluatedDocs");
 app.use("/evaluateDocs", evaluatedDocRouter);
