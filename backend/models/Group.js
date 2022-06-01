@@ -45,7 +45,7 @@ const groupSchema = new Schema({
 
    
    
-     supervisorName :{
+    supervisorName :{
                 type: String,
                 require: true
             },
@@ -54,7 +54,7 @@ const groupSchema = new Schema({
     
     coSupName :{
                 type: String,
-                require: true
+                
                },
         
            

@@ -27,6 +27,10 @@ app.use('/api/auth', require('./routes/authenticationRoutes'));
 //Chat Router
 app.use("/api/messages", require("./routes/messageRoutes"));
 
+
+//Group Router
+app.use("/api/group", require("./routes/groups"));
+
 const port = process.env.PORT;
 const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
