@@ -39,6 +39,12 @@ app.use("/api/sendFeedback",require ("./routes/evaluationTopics"));
 //Group Router
 app.use("/api/group", require("./routes/groups"));
 
+//Evaluated docs Router
+app.use("/api/evaluateDocs", require("./routes/evaluateDocs"));
+
+//Evaluated presentations Router
+app.use("/api/evaluatePres", require("./routes/evaluatePresentations"));
+
 //marking schemes uploading and downloading
 app.use(express.static(path.join(__dirname, '..', 'build')));
 app.use(fileRoute);
