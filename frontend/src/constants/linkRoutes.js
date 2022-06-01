@@ -1,8 +1,3 @@
-const linkRoutes = [
-  {
-    to: "/",
-    name: "Home",
-    type: "customer",
-  },
-];
-export default linkRoutes;
+export const baseURL = "http://localhost:5000";
+export const sendMessageRoute = `${baseURL}/api/messages/addmsg`;
+export const getMessagesRoute = `${baseURL}/api/messages/getmsg`;
