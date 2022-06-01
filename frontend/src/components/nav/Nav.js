@@ -7,7 +7,7 @@ export default function Nav() {
     const [value, setValue] = useState();
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-    const ITEMS = ["Chat", "Group"];
+    const ITEMS = ["chat", "group", "submissions"];
 
     return (
         <React.Fragment>
@@ -25,12 +25,12 @@ export default function Nav() {
                                 >
                                     {
                                         ITEMS.map((page, index) => (
-                                            <Tab key={index} label={page} />
+                                            <Tab key={index} label={page} href={` ${page}`} />
                                         ))
                                     }
                                 </Tabs>
-                                <Button sx={{ marginLeft: 'auto' }} variant='contained'>Register</Button>
-                                <Button sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>Login</Button>
+                                <Button href="/register" sx={{ marginLeft: 'auto' }} variant='contained'>Register</Button>
+                                <Button href="/login" sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>Login</Button>
                                 <LogoutIcon />
                             </>
                         )
