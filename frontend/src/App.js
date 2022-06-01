@@ -1,29 +1,22 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+import Home from './pages/home/Home';
+import Chat from './pages/chat/Chat';
+import Nav from './components/nav/Nav';
 import Admin from './components/Admin/AdminHome';
-
 
 const App = () => {
   return (
-
-   
-    <Router>  
-
-      <div>
+    <>
+      <Nav />
+      <Router>
         <Routes>
           <Route exact path="/" element={<Home />} ></Route>
-</Routes>
-<Routes>
           <Route exact path="/adminpanel" element={<Admin />} ></Route>
-</Routes>
-</div>   
-</Router>
-        
-   
-
+          <Route path="/chat" element={<Chat />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
