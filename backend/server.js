@@ -29,6 +29,7 @@ connection.once("open", () => {
 // app.use("/auth", authRoutes);
 
 app.use('/api/auth', require('./routes/authenticationRoutes'));
+app.use('/api/student', require('./routes/studentRoutes'));
 
 //Evaluated docs Router
 const evaluatedDocRouter = require("./routes/EvaluatedDocs");

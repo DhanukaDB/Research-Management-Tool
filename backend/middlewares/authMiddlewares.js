@@ -24,7 +24,7 @@ exports.protectedAdmin = async (req, res, next) => {
     token = tokenValidate(req, res);
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const user = await Student.findById(decoded.id);
+      const user = await Staff.findById(decoded.id);
       if (!user) {
         noUserResponse(res);
       } else {
@@ -40,7 +40,7 @@ exports.protectedAdmin = async (req, res, next) => {
     token = tokenValidate(req, res);
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const user = await Staff.findById(decoded.id);
+      const user = await Student.findById(decoded.id);
       if (!user) {
         noUserResponse(res);
       } else {
