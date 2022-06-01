@@ -27,6 +27,14 @@ app.use('/api/auth', require('./routes/authenticationRoutes'));
 //Chat Router
 app.use("/api/messages", require("./routes/messageRoutes"));
 
+//give feedback for the topics
+const sendfeedback = require("./routes/evaluationTopics");
+app.use("/sendFeedback",sendfeedback);
+
+//students register topic and request for a supervisor
+const regTopics = require("./routes/registerTopics");
+app.use("/registerTopic",regTopics);
+
 const port = process.env.PORT;
 const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
