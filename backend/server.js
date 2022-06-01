@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require('path');
+const fileRoute = require('./routes/markinguploads')
 require("dotenv").config();
 
 const URL = process.env.MONGODB_URL;
@@ -29,16 +31,21 @@ app.use("/api/messages", require("./routes/messageRoutes"));
 
 
 //give feedback for the topics
-const sendfeedback = require("./routes/evaluationTopics");
-app.use("/sendFeedback",sendfeedback);
 
-//students register topic and request for a supervisor
-const regTopics = require("./routes/registerTopics");
-app.use("/registerTopic",regTopics);
+app.use("/api/sendFeedback",require ("./routes/evaluationTopics"));
+
 
 
 //Group Router
 app.use("/api/group", require("./routes/groups"));
+
+//marking schemes uploading and downloading
+app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(fileRoute);
+
+app.get('*', (req, res) => {
+   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
 
 
 const port = process.env.PORT;
