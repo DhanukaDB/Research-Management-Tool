@@ -20,6 +20,7 @@ exports.registerStudent = async (req, res, next) => {
          
           
         });
+        sendToken(student, 200, res);
        // const token = await Student.getSignedToken();
         res.status(201).json({ success: true, token, role: "student" });
       } catch (error) {
@@ -49,8 +50,9 @@ exports.registerStudent = async (req, res, next) => {
          
           
         });
+        
        // const token = await Staff.getSignedToken();
-        res.status(201).json({ success: true });
+       sendToken(staff, 201, res);
       } catch (error) {
         res.status(500).json({
           error,
@@ -77,7 +79,7 @@ exports.registerStudent = async (req, res, next) => {
          
         });
        // const token = await Admin.getSignedToken();
-        res.status(201).json({ success: true });
+       sendToken(admin, 201, res);
       } catch (error) {
         res.status(500).json({
           error,
@@ -95,7 +97,7 @@ exports.registerStudent = async (req, res, next) => {
       if(!email || !password){
         res.status(400).json({
                success: false,
-                 desc: "provide email, pw" })
+                 desc: "provide email, password" })
        }
        
        try {
@@ -115,12 +117,8 @@ exports.registerStudent = async (req, res, next) => {
                   error: "Invalid credentials - Please check again",
                 });
               } else {
-               
-               res.status(200).json({
-                success: true,
-                token: "tr3455fc",
-                // sendToken(student, 200, res);
-              });
+           
+                sendToken(student, 200, res);
               }
        } catch (error) {
         res.status(500).json({
@@ -128,10 +126,95 @@ exports.registerStudent = async (req, res, next) => {
           error: error.message
         });
        }
+};
 
-  
-      
-  };
+exports.staffLogin = async (req, res, next) => {
+
+  const { email, password, role } = req.body;
+
+    if(!email || !password ){
+      res.status(400).json({
+             success: false,
+               desc: "provide email, password and role " })
+     }
+     
+     try {
+      const staff = await Staff.findOne({ email: email }).select("+password");
+
+       if(!staff){
+        res.status(404).json({
+          success: false,
+            error: "invalid credentials" })
+       }
+
+       const isMatch = await staff.matchPasswords(password);
+
+            if (!isMatch) {
+              res.status(401).json({
+                success: false,
+                error: "Invalid credentials - Please check again",
+              });
+            } else {
+         
+              sendToken(staff, 200, res);
+            }
+     } catch (error) {
+      res.status(500).json({
+        success: false,
+        error: error.message
+      });
+     }
+};
+
+
+exports.adminLogin = async (req, res, next) => {
+
+  const { email, password, role } = req.body;
+
+    if(!email || !password ){
+      res.status(400).json({
+             success: false,
+               desc: "provide email, password and role " })
+     }
+     
+     try {
+      const admin = await Admin.findOne({ email: email }).select("+password");
+
+       if(!admin){
+        res.status(404).json({
+          success: false,
+            error: "invalid credentials" })
+       }
+
+       const isMatch = await admin.matchPasswords(password);
+
+            if (!isMatch) {
+              res.status(401).json({
+                success: false,
+                error: "Invalid credentials - Please check again",
+              });
+            } else {
+         
+              sendToken(admin, 200, res);
+            }
+     } catch (error) {
+      res.status(500).json({
+        success: false,
+        error: error.message
+      });
+     }
+};
+
+const sendToken = (user, statusCode, res) => {
+  const token = user.getSignedToken();
+  res.status(statusCode).json({ sucess: true, token, user });
+};
+
+
+
+
+
+
 
 
   // login controller function
@@ -177,3 +260,4 @@ exports.registerStudent = async (req, res, next) => {
 //     next(error);
 //   }
 // };
+

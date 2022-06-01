@@ -5,6 +5,8 @@ const router = express.Router();
 const {
   registerStudent,
   studentLogin,
+  staffLogin,
+  adminLogin,
   forgotpassword,
   resetpassword,
   registerStaff,
@@ -20,6 +22,8 @@ router.route("/registeradmin").post(registerAdmin);
 
 //login routes
 router.route("/studentlogin").post(studentLogin);
+router.route("/stafflogin").post(staffLogin);
+router.route("/adminlogin").post(adminLogin);
 
 
 //router.route("/forgotpassword").post(forgotpassword);
