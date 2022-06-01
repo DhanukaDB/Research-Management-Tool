@@ -23,12 +23,7 @@ connection.once("open", () => {
 });
 
 app.use('/api/auth', require('./routes/authenticationRoutes'));
-//Evaluated docs Router
-app.use("/evaluateDocs", require("./routes/EvaluatedDocs"));
-//Evaluated Presentations Router
-app.use("/EvaluatedPres", require("./routes/EvaluatedPres"));
-//Evaluated Topics Router
-app.use("/EvaluateTopics", require("./routes/EvaluatedTopics"));
+
 //Chat Router
 app.use("/api/messages", require("./routes/messageRoutes"));
 
