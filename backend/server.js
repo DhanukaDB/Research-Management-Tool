@@ -12,8 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-const port = process.env.PORT || 5000;
-
 mongoose.connect(URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -24,24 +22,17 @@ connection.once("open", () => {
   console.log("Mongodb connection success!");
 });
 
-
-// const authRoutes = require("./routes/authenticationRoutes");
-// app.use("/auth", authRoutes);
-
 app.use('/api/auth', require('./routes/authenticationRoutes'));
-
 //Evaluated docs Router
-const evaluatedDocRouter = require("./routes/EvaluatedDocs");
-app.use("/evaluateDocs", evaluatedDocRouter);
+app.use("/evaluateDocs", require("./routes/EvaluatedDocs"));
 //Evaluated Presentations Router
-const evaluatedPreRouter = require("./routes/EvaluatedPres");
-app.use("/EvaluatedPres", evaluatedPreRouter);
+app.use("/EvaluatedPres", require("./routes/EvaluatedPres"));
 //Evaluated Topics Router
-const evaluatedTopicsRouter = require("./routes/EvaluatedTopics");
-app.use("/EvaluateTopics", evaluatedTopicsRouter);
+app.use("/EvaluateTopics", require("./routes/EvaluatedTopics"));
 
-app.listen(port, (error) => {
-  console.log(`Server running on port ${port}`);
-});
+const port = process.env.PORT;
+const server = app.listen(port, () => {
+  console.log(`server running on ${port}`)
+})
 
 
