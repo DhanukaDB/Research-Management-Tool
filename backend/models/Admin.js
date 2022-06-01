@@ -9,8 +9,9 @@ const adminSchema = new Schema({
 
   },
 
-  username : {
+  email : {
         type : String,
+        unique: true,
         require: true
   },
    phoneno : {
