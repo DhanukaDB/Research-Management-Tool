@@ -29,6 +29,8 @@ app.use("/evaluateDocs", require("./routes/EvaluatedDocs"));
 app.use("/EvaluatedPres", require("./routes/EvaluatedPres"));
 //Evaluated Topics Router
 app.use("/EvaluateTopics", require("./routes/EvaluatedTopics"));
+//Chat Router
+app.use("/api/messages", require("./routes/messageRoutes"));
 
 const port = process.env.PORT;
 const server = app.listen(port, () => {
