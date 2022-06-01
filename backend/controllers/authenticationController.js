@@ -88,47 +88,92 @@ exports.registerStudent = async (req, res, next) => {
   ;
 
 
+  exports.studentLogin = async (req, res, next) => {
+
+    const { email, password, role } = req.body;
+
+      if(!email || !password){
+        res.status(400).json({
+               success: false,
+                 desc: "provide email, pw" })
+       }
+       
+       try {
+        const student = await Student.findOne({ email: email }).select("+password");
+
+         if(!student){
+          res.status(404).json({
+            success: false,
+              error: "invalid credentials" })
+         }
+
+         const isMatch = await student.matchPasswords(password);
+
+              if (!isMatch) {
+                res.status(401).json({
+                  success: false,
+                  error: "Invalid credentials - Please check again",
+                });
+              } else {
+               
+               res.status(200).json({
+                success: true,
+                token: "tr3455fc",
+                // sendToken(student, 200, res);
+              });
+              }
+       } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        });
+       }
+
+  
+      
+  };
+
 
   // login controller function
-exports.login = async (req, res, next) => {
-  const { email, password, role } = req.body;
-  //check user
-  let user;
-  if (role === "admin") {
-    user = await Admin.findOne({ email: email }).select("+password");
-  } else if (role === "student") {
-    user = await Student.findOne({ email: email }).select("+password");
-  } else if (role === "supervisor") {
-    user = await Staff.findOne({ email: email }).select(
-      "+password"
-    );
-  } else if (role === "co-supervisor") {
-    user = await Staff.findOne({ email: email }).select(
-      "+password"
-    );
-  } else if (role === "pannel-member") {
-    user = await Staff.findOne({ email: email }).select(
-      "+password"
-    );
-  } else {
-    res.status(422).json({
-      success: false,
-      desc: "Can not find the user - Please check again",
-    });
-  }
-  //check password match
-  try {
-    const isMatch = await user.matchPasswords(password);
+// exports.login = async (req, res, next) => {
+//   const { email, password, role } = req.body;
+//   //check user
+//   let user;
+//   if (role === "admin") {
+//     user = await Admin.findOne({ email: email }).select("+password");
+//   } else if (role === "student") {
+//     user = await Student.findOne({ email: email }).select("+password");
+//   } else if (role === "supervisor") {
+//     user = await Staff.findOne({ email: email }).select(
+//       "+password"
+//     );
+//   } else if (role === "co-supervisor") {
+//     user = await Staff.findOne({ email: email }).select(
+//       "+password"
+//     );
+//   } else if (role === "pannel-member") {
+//     user = await Staff.findOne({ email: email }).select(
+//       "+password"
+//     );
+//   } else {
+//     res.status(422).json({
+//       success: false,
+//       desc: "Can not find the user - Please check again",
+//     });
+//   }
+//   //check password match
+//   try {
+//     const isMatch = await user.matchPasswords(password);
 
-    if (!isMatch) {
-      res.status(401).send({
-        success: false,
-        desc: "Invalid credentials - Please check again",
-      });
-    } else {
-      sendToken(user, 200, res);
-    }
-  } catch (error) {
-    next(error);
-  }
-};
+//     if (!isMatch) {
+//       res.status(401).send({
+//         success: false,
+//         desc: "Invalid credentials - Please check again",
+//       });
+//     } else {
+//       sendToken(user, 200, res);
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// };

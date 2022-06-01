@@ -43,5 +43,3 @@ app.use("/EvaluateTopics", evaluatedTopicsRouter);
 app.listen(port, (error) => {
   console.log(`Server running on port ${port}`);
 });
-
-
