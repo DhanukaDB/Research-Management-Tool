@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // import  protected-routes middlewares
-const {protectedStudent} = require("../middlewares/authMiddlewares");
+const {protectedStudent,protectedStudentAndStaff} = require("../middlewares/authMiddlewares");
 
 
 //import controllers
@@ -20,6 +20,6 @@ const {
 router.route("/profile").get(protectedStudent,getStudentProfile);
 router.route("/updateProfile").put(protectedStudent,updateStudentProfile);
 router.route("/deleteProfile").delete(protectedStudent,deleteStudentProfile);
-router.route("/home").get(protectedStudent,home);
+router.route("/home").get(protectedStudentAndStaff,home);
 
 module.exports = router; 

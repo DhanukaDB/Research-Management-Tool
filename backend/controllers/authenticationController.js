@@ -1,208 +1,197 @@
- const Admin = require("../models/Admin");
+const Admin = require("../models/Admin");
 const Staff = require("../models/Staff");
-const Student = require ("../models/Student");
+const Student = require("../models/Student");
 
 exports.registerStudent = async (req, res, next) => {
-    const { studentID, name, email, contactNumber, password, ppEnc } = req.body;
-   // let existingEmail = await findEmailDuplicates(email, res);
-    //if (existingEmail === null)
-   
-      try {
-        // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
-        //   upload_preset: "Profile_Pictures",
-        // });
-        const student = await Student.create({  
-          studentID,
-          name,
-          email,
-          contactNumber,
-          password,
-         
-          
-        });
-        sendToken(student, 200, res);
-       // const token = await Student.getSignedToken();
-        res.status(201).json({ success: true, token, role: "student" });
-      } catch (error) {
-        res.status(500).json({
-          error,
-          desc: "Error occurred in registerstudent" + error,
-        });
-      }
+  const { studentID, name, email, contactNumber, password, ppEnc } = req.body;
+  // let existingEmail = await findEmailDuplicates(email, res);
+  //if (existingEmail === null)
+
+  try {
+    // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
+    //   upload_preset: "Profile_Pictures",
+    // });
+    const student = await Student.create({
+      studentID,
+      name,
+      email,
+      contactNumber,
+      password,
+    });
+    sendToken(student, 200, res);
+    // const token = await Student.getSignedToken();
+    res.status(201).json({ success: true, token, role: "student" });
+  } catch (error) {
+    res.status(500).json({
+      error,
+      desc: "Error occurred in registerstudent" + error,
+    });
+  }
+};
+
+exports.registerStaff = async (req, res, next) => {
+  const { staffID, name, email, password, role } = req.body;
+  // let existingEmail = await findEmailDuplicates(email, res);
+  //if (existingEmail === null)
+
+  try {
+    // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
+    //   upload_preset: "Profile_Pictures",
+    // });
+    const staff = await Staff.create({
+      staffID,
+      name,
+      email,
+      password,
+      role,
+    });
+
+    // const token = await Staff.getSignedToken();
+    sendToken(staff, 201, res);
+  } catch (error) {
+    res.status(500).json({
+      error,
+      desc: "Error occurred in registerstudent" + error,
+    });
+  }
+};
+
+exports.registerAdmin = async (req, res, next) => {
+  const { email, phoneno, password } = req.body;
+  // let existingEmail = await findEmailDuplicates(email, res);
+  //if (existingEmail === null)
+
+  try {
+    // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
+    //   upload_preset: "Profile_Pictures",
+    // });
+    const admin = await Admin.create({
+      email,
+      phoneno,
+      password,
+    });
+    // const token = await Admin.getSignedToken();
+    sendToken(admin, 201, res);
+  } catch (error) {
+    res.status(500).json({
+      error,
+      desc: "Error occurred in registerstudent" + error,
+    });
+  }
+};
+
+exports.studentLogin = async (req, res, next) => {
+  const { email, password, role } = req.body;
+
+  if (!email || !password) {
+    res.status(400).json({
+      success: false,
+      desc: "provide email, password",
+    });
+  }
+
+  try {
+    const student = await Student.findOne({ email: email }).select("+password");
+
+    if (!student) {
+      res.status(404).json({
+        success: false,
+        error: "invalid credentials",
+      });
     }
-  ;
 
-  exports.registerStaff = async (req, res, next) => {
-    const { staffID, name, email, password ,role} = req.body;
-   // let existingEmail = await findEmailDuplicates(email, res);
-    //if (existingEmail === null)
-   
-      try {
-        // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
-        //   upload_preset: "Profile_Pictures",
-        // });
-        const staff = await Staff.create({  
-          staffID,
-          name,
-          email,
-          password,
-          role,
-         
-          
-        });
-        
-       // const token = await Staff.getSignedToken();
-       sendToken(staff, 201, res);
-      } catch (error) {
-        res.status(500).json({
-          error,
-          desc: "Error occurred in registerstudent" + error,
-        });
-      }
+    const isMatch = await student.matchPasswords(password);
+
+    if (!isMatch) {
+      res.status(401).json({
+        success: false,
+        error: "Invalid credentials - Please check again",
+      });
+    } else {
+      sendToken(student, 200, res);
     }
-  ;
-  
-  exports.registerAdmin = async (req, res, next) => {
-    const { email , phoneno, password} = req.body;
-   // let existingEmail = await findEmailDuplicates(email, res);
-    //if (existingEmail === null)
-   
-      try {
-        // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
-        //   upload_preset: "Profile_Pictures",
-        // });
-        const admin = await Admin.create({  
-
-          email,
-          phoneno,
-          password,
-         
-        });
-       // const token = await Admin.getSignedToken();
-       sendToken(admin, 201, res);
-      } catch (error) {
-        res.status(500).json({
-          error,
-          desc: "Error occurred in registerstudent" + error,
-        });
-      }
-    }
-  ;
-
-
-  exports.studentLogin = async (req, res, next) => {
-
-    const { email, password, role } = req.body;
-
-      if(!email || !password){
-        res.status(400).json({
-               success: false,
-                 desc: "provide email, password" })
-       }
-       
-       try {
-        const student = await Student.findOne({ email: email }).select("+password");
-
-         if(!student){
-          res.status(404).json({
-            success: false,
-              error: "invalid credentials" })
-         }
-
-         const isMatch = await student.matchPasswords(password);
-
-              if (!isMatch) {
-                res.status(401).json({
-                  success: false,
-                  error: "Invalid credentials - Please check again",
-                });
-              } else {
-           
-                sendToken(student, 200, res);
-              }
-       } catch (error) {
-        res.status(500).json({
-          success: false,
-          error: error.message
-        });
-       }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
 };
 
 exports.staffLogin = async (req, res, next) => {
-
   const { email, password, role } = req.body;
 
-    if(!email || !password ){
-      res.status(400).json({
-             success: false,
-               desc: "provide email, password and role " })
-     }
-     
-     try {
-      const staff = await Staff.findOne({ email: email }).select("+password");
+  if (!email || !password) {
+    res.status(400).json({
+      success: false,
+      desc: "provide email, password and role ",
+    });
+  }
 
-       if(!staff){
-        res.status(404).json({
-          success: false,
-            error: "invalid credentials" })
-       }
+  try {
+    const staff = await Staff.findOne({ email: email }).select("+password");
 
-       const isMatch = await staff.matchPasswords(password);
-
-            if (!isMatch) {
-              res.status(401).json({
-                success: false,
-                error: "Invalid credentials - Please check again",
-              });
-            } else {
-         
-              sendToken(staff, 200, res);
-            }
-     } catch (error) {
-      res.status(500).json({
+    if (!staff) {
+      res.status(404).json({
         success: false,
-        error: error.message
+        error: "invalid credentials",
       });
-     }
+    }
+
+    const isMatch = await staff.matchPasswords(password);
+
+    if (!isMatch) {
+      res.status(401).json({
+        success: false,
+        error: "Invalid credentials - Please check again",
+      });
+    } else {
+      sendToken(staff, 200, res);
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
 };
 
-
 exports.adminLogin = async (req, res, next) => {
-
   const { email, password, role } = req.body;
 
-    if(!email || !password ){
-      res.status(400).json({
-             success: false,
-               desc: "provide email, password and role " })
-     }
-     
-     try {
-      const admin = await Admin.findOne({ email: email }).select("+password");
+  if (!email || !password) {
+    res.status(400).json({
+      success: false,
+      desc: "provide email, password and role ",
+    });
+  }
 
-       if(!admin){
-        res.status(404).json({
-          success: false,
-            error: "invalid credentials" })
-       }
+  try {
+    const admin = await Admin.findOne({ email: email }).select("+password");
 
-       const isMatch = await admin.matchPasswords(password);
-
-            if (!isMatch) {
-              res.status(401).json({
-                success: false,
-                error: "Invalid credentials - Please check again",
-              });
-            } else {
-         
-              sendToken(admin, 200, res);
-            }
-     } catch (error) {
-      res.status(500).json({
+    if (!admin) {
+      res.status(404).json({
         success: false,
-        error: error.message
+        error: "invalid credentials",
       });
-     }
+    }
+
+    const isMatch = await admin.matchPasswords(password);
+
+    if (!isMatch) {
+      res.status(401).json({
+        success: false,
+        error: "Invalid credentials - Please check again",
+      });
+    } else {
+      sendToken(admin, 200, res);
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
 };
 
 const sendToken = (user, statusCode, res) => {
@@ -210,14 +199,7 @@ const sendToken = (user, statusCode, res) => {
   res.status(statusCode).json({ sucess: true, token, user });
 };
 
-
-
-
-
-
-
-
-  // login controller function
+// login controller function
 // exports.login = async (req, res, next) => {
 //   const { email, password, role } = req.body;
 //   //check user
@@ -260,4 +242,3 @@ const sendToken = (user, statusCode, res) => {
 //     next(error);
 //   }
 // };
-
