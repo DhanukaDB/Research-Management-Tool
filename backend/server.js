@@ -54,6 +54,11 @@ app.get('*', (req, res) => {
 });
 
 
+//Student Document Submission Router
+const submissionRouter = require("./routes/submission");
+app.use("/submission", submissionRouter);
+
+
 const port = process.env.PORT;
 const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
