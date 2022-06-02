@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const Chat = require('./modules/chat/chat');
 
 const URL = process.env.MONGODB_URL;
 
@@ -24,12 +25,12 @@ connection.once("open", () => {
 
 app.use('/api/auth', require('./routes/authenticationRoutes'));
 
-//Chat Router
-app.use("/api/messages", require("./routes/messageRoutes"));
-
 const port = process.env.PORT;
 const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
 })
 
+//Chat
+//new Chat(server).init();
+let chat = new Chat(server).init();
 
