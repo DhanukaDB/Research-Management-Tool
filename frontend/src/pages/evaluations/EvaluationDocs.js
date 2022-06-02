@@ -104,7 +104,7 @@ return (
     <div className="containerDetails">
     <hr />
             <center>
-            <h1>Evaluation Marks</h1>
+            <h1>Evaluation of Documents</h1>
            </center>
             <hr />
             <input className="search1"

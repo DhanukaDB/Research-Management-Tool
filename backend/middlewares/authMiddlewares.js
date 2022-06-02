@@ -19,23 +19,7 @@ exports.protectedAdmin = async (req, res, next) => {
       invalidUserResponse(res, err);
     }
   };
-  exports.protectedStaff = async (req, res, next) => {
-    let token;
-    token = tokenValidate(req, res);
-    try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const user = await Student.findById(decoded.id);
-      if (!user) {
-        noUserResponse(res);
-      } else {
-        req.user = user;
-        next();
-      }
-    } catch (err) {
-      invalidUserResponse(res, err);
-    }
-  };
-  exports.protectedStudent = async (req, res, next) => {
+exports.protectedStaff = async (req, res, next) => {
     let token;
     token = tokenValidate(req, res);
     try {
@@ -51,7 +35,43 @@ exports.protectedAdmin = async (req, res, next) => {
       invalidUserResponse(res, err);
     }
   };
+exports.protectedStudent = async (req, res, next) => {
+    let token;
+    token = tokenValidate(req, res);
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await Student.findById(decoded.id);
+      if (!user) {
+        noUserResponse(res);
+      } else {
+        req.user = user;
+        next();
+      }
+    } catch (err) {
+      invalidUserResponse(res, err);
+    }
+  };
+exports.protectedStudentAndStaff = async (req, res, next) => {
+    let token;
+    token = tokenValidate(req, res);
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      let user = await Student.findById(decoded.id);
+      if (user === null) {
+        user = await Staff.findById(decoded.id);
+      }
 
+      if (!user) {
+        noUserResponse(res);
+      } 
+      else {
+        req.user = user;
+        next();
+      }
+    } catch (err) {
+      invalidUserResponse(res, err);
+    }
+  };
   const tokenValidate = (reqObj, res) => {
     let token;
     if (

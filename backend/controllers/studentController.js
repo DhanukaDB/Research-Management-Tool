@@ -1,8 +1,8 @@
-const StudentModel = require("../models/Student");
+const Student = require("../models/Student");
 
 const mongoose = require("mongoose");
 
-//fetch customer profile
+//fetch student profile
 exports.getStudentProfile = async (req,res) =>{
     try{
         if(!req.user) {
@@ -13,7 +13,7 @@ exports.getStudentProfile = async (req,res) =>{
             });
         }else {
             res.status(200).send({
-                customer:req.user,
+                student:req.user,
             });
         }
     }catch(error) {
@@ -25,7 +25,7 @@ exports.getStudentProfile = async (req,res) =>{
 };
 
 //update cutomer profile
-exports.updateCustomerProfile = async (req,res) => {
+exports.updateStudentProfile = async (req,res) => {
     const {username,email,address,phone} = req.body;
 
     try{
@@ -36,7 +36,7 @@ exports.updateCustomerProfile = async (req,res) => {
             phone
         };
 
-        const updatedCustomer = await CustomerModel.findByIdAndUpdate(
+        const updatedstudent = await Student.findByIdAndUpdate(
             req.user.id,
             newData,
             {
@@ -47,14 +47,51 @@ exports.updateCustomerProfile = async (req,res) => {
         );
         res.status(200).send({
             success:true,
-            desc: "customer update successfully",
-            updatedCustomer,
+            desc: "student update successfully",
+            updatedstudent,
         });
     }catch(error){
         res.status(500).json({
             success:false,
-            desc:"Error in updating customer profile controller " +error,
+            desc:"Error in updating student profile controller " +error,
         });
     }
 };
 
+//delete student profile
+exports.deleteStudentProfile = async(req,res) =>{
+
+    if (!mongoose.Types.ObjectId.isValid(req.user._id))
+        return res.status(404).send(`No student with id: ${req.user._id}`);
+
+    try {
+        await Student.findByIdAndRemove(req.user._id);
+        const deletedStudent = await DeletedStudentModel.create({
+            studentID:req.user._id
+        });
+       
+        res.status(200).send({
+            success: true,
+            desc: "Student deleted successfully",
+            deletedStudent,
+
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            desc: "Error in delete Student Profile controller-" + error,
+        });
+    }
+
+
+};
+
+
+exports.home =  (req,res) =>{
+    
+            res.status(200).json({
+               success:true,
+            data:"access granted "
+        })
+            
+};
