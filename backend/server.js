@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require('path');
+const fileRoute = require('./routes/markinguploads')
 require("dotenv").config();
 const Chat = require('./modules/chat/chat');
 
@@ -24,6 +26,28 @@ connection.once("open", () => {
 });
 
 app.use('/api/auth', require('./routes/authenticationRoutes'));
+//give feedback for the topics
+app.use("/api/sendFeedback", require("./routes/evaluationTopics"));
+//Group Router
+app.use("/api/group", require("./routes/groups"));
+
+//Evaluated docs Router
+app.use("/api/evaluateDocs", require("./routes/evaluateDocs"));
+
+//Evaluated presentations Router
+app.use("/api/evaluatePres", require("./routes/evaluatePresentations"));
+
+//marking schemes uploading and downloading
+app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(fileRoute);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
+
+//Student Document Submission Router
+const submissionRouter = require("./routes/submission");
+app.use("/submission", submissionRouter);
 
 const port = process.env.PORT;
 const server = app.listen(port, () => {
@@ -31,6 +55,4 @@ const server = app.listen(port, () => {
 })
 
 //Chat
-//new Chat(server).init();
-let chat = new Chat(server).init();
-
+new Chat(server).init();

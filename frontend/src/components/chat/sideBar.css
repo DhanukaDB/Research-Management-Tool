@@ -1,10 +1,10 @@
 .sidebar-container{
     width: 25vw;
     height: 100vh;
-    background-color: rgb(82, 83, 84);
+    background-color: rgb(216, 224, 232);
 }
 .chat-box-heading{
-    color: white;
+    color: rgb(4, 4, 4);
     font-size: 1.5rem;
     text-align: center;
     justify-content: center;

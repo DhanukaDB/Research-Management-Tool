@@ -8,7 +8,7 @@ export default function Nav() {
     const [value, setValue] = useState();
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-    const ITEMS = ["home", "chat", "group", "submissions"];
+    const ITEMS = ["home", "chat", "group", "submissions", "Evaluations"];
 
     return (
         <React.Fragment>
@@ -32,6 +32,7 @@ export default function Nav() {
                                         ))
                                     }
                                 </Tabs>
+                                <Button href="/EvaluationsHome" sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>Evaluations</Button>
                                 <Button href="/register" sx={{ marginLeft: 'auto' }} variant='contained'>Register</Button>
                                 <Button href="/login" sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>Login</Button>
                                 <LogoutIcon />
@@ -39,8 +40,8 @@ export default function Nav() {
                         )
                     }
 
-                </Toolbar>
-            </AppBar>
-        </React.Fragment>
+                </Toolbar >
+            </AppBar >
+        </React.Fragment >
     )
 }

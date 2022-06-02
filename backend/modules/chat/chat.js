@@ -1,8 +1,7 @@
-const Server = require('socket.io');
 const ChatEvents = require('./chatEvents.js');
 const ChatLogger = require('./chatLogger.js');
-const addMessage = require('./chatService.js');
-const getMessagesBygroupId = require('./chatService.js');
+const { addMessage, getMessagesBygroupId } = require('./chatService.js');
+const { Server } = require('socket.io');
 
 let Chat = class Chat {
   socket;
