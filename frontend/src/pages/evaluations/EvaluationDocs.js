@@ -113,7 +113,7 @@ return (
                 placeholder=" Document Title "
                 onChange={(e) => setSearchTitle(e.target.value)} />
               
-
+<br/>
       <table className="table table-bordered detailTable" id="my-table">
         <thead className="bg-dark text-light">
           <tr className="detailRaw">
