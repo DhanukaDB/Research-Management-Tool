@@ -9,9 +9,9 @@ router.route("/add").post((req,res) => {
     const topic = req.body.topic;
     const status = req.body.status;
     const feedback = req.body.feedback;
+    const supervisor = req.body.supervisor;
 
-
-    if(!groupno || !topic || !status || !feedback ){
+    if(!groupno || !topic || !supervisor || !status || !feedback ){
         return res.status(422).json({error:"please add all the feilds"})
 
     }
@@ -26,6 +26,7 @@ router.route("/add").post((req,res) => {
     const newFeedback = new SendFeedbak({
         groupno,
         topic,
+        supervisor,
         status,
         feedback,
        
@@ -66,6 +67,7 @@ router.route("/update/:id").put(async (req, res) => {
       const updateTopic = {
         groupno,
         topic,
+        supervisor,
         staus,
         feedback
       }
@@ -82,16 +84,16 @@ router.route("/update/:id").put(async (req, res) => {
 
 
 // //Delete  
-// router.route("/delete/:id").delete(async (req, res) => {
-//       let topicID = req.params.id;
+router.route("/delete/:id").delete(async (req, res) => {
+      let topicID = req.params.id;
       
-//       await EvaluateTopic.findByIdAndDelete(topicID).then(() => {
-//           res.status(200).send({status: " deleted"});
-//       }).catch ((err) => {
-//           console.log(err.message);
-//           res.status(500).send({status: " Error with delete ", error: err.message});
-//       })
-//     })
+      await SendFeedbak.findByIdAndDelete(topicID).then(() => {
+          res.status(200).send({status: " deleted"});
+      }).catch ((err) => {
+          console.log(err.message);
+          res.status(500).send({status: " Error with delete ", error: err.message});
+      })
+    })
 
 
 router.route("/get/:id").get(async(req, res) => {

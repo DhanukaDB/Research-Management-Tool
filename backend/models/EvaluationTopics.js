@@ -11,6 +11,10 @@ groupno : {
             type : String,
             require: true
       },   
+      supervisor : {
+            type : String,
+            require: true
+      }, 
   status : {
         type : String,
         require: true
