@@ -84,16 +84,16 @@ router.route("/update/:id").put(async (req, res) => {
 
 
 // //Delete  
-// router.route("/delete/:id").delete(async (req, res) => {
-//       let topicID = req.params.id;
+router.route("/delete/:id").delete(async (req, res) => {
+      let topicID = req.params.id;
       
-//       await EvaluateTopic.findByIdAndDelete(topicID).then(() => {
-//           res.status(200).send({status: " deleted"});
-//       }).catch ((err) => {
-//           console.log(err.message);
-//           res.status(500).send({status: " Error with delete ", error: err.message});
-//       })
-//     })
+      await SendFeedbak.findByIdAndDelete(topicID).then(() => {
+          res.status(200).send({status: " deleted"});
+      }).catch ((err) => {
+          console.log(err.message);
+          res.status(500).send({status: " Error with delete ", error: err.message});
+      })
+    })
 
 
 router.route("/get/:id").get(async(req, res) => {

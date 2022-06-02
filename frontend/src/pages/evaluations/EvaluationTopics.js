@@ -18,7 +18,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 16,
   },
 }));
 
@@ -88,10 +88,10 @@ useEffect(() => {
         <TableHead>
           <TableRow>
             <StyledTableCell>Group ID</StyledTableCell>
-            <StyledTableCell align="right">Topic</StyledTableCell>
-            <StyledTableCell align="right">Supervisor</StyledTableCell>
-            <StyledTableCell align="right">Status</StyledTableCell>
-            <StyledTableCell align="right">Feedback</StyledTableCell>
+            <StyledTableCell align="center">Topic</StyledTableCell>
+            <StyledTableCell align="center">Supervisor</StyledTableCell>
+            <StyledTableCell align="center">Status</StyledTableCell>
+            <StyledTableCell align="center">Feedback</StyledTableCell>
           </TableRow>
         </TableHead>
         {loading ? (
@@ -114,11 +114,11 @@ useEffect(() => {
                                 <TableBody>
        
             
-              <StyledTableCell align="right">{evaluateTopics.groupno}</StyledTableCell>
-              <StyledTableCell align="right">{evaluateTopics.topic}</StyledTableCell>
-              <StyledTableCell align="right">{evaluateTopics.supervisor}</StyledTableCell>
-              <StyledTableCell align="right">{evaluateTopics.status}</StyledTableCell>
-              <StyledTableCell align="right">{evaluateTopics.feedback}</StyledTableCell>
+              <StyledTableCell align="center">{evaluateTopics.groupno}</StyledTableCell>
+              <StyledTableCell align="center">{evaluateTopics.topic}</StyledTableCell>
+              <StyledTableCell align="center">{evaluateTopics.supervisor}</StyledTableCell>
+              <StyledTableCell align="center">{evaluateTopics.status}</StyledTableCell>
+              <StyledTableCell align="center">{evaluateTopics.feedback}</StyledTableCell>
            
           
           
