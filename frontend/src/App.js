@@ -4,11 +4,15 @@ import Home from './pages/home/Home';
 import Chat from './pages/chat/Chat';
 import Nav from './components/nav/Nav';
 import Admin from './components/Admin/AdminHome';
+
 import AddmarksDocs from './pages/evaluations/AddmarksDocs'
 import EvaluationsHome from './pages/evaluations/EvaluationsHome'
 import EvaluationDocs from './pages/evaluations/EvaluationDocs'
 import EvaluationPres from './pages/evaluations/EvaluationPres'
 import EvaluationTopics from './pages/evaluations/EvaluationTopics'
+
+import DocumentSubmission from'./components/DocumentSubmission';
+
 
 const App = () => {
   return (
@@ -24,6 +28,9 @@ const App = () => {
           <Route path="/EvaluationDocs" element={<EvaluationDocs />} />
           <Route path="/EvaluationPres" element={<EvaluationPres />} />
           <Route path="/EvaluationTopics" element={<EvaluationTopics />} />
+
+          <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
+
         </Routes>
       </Router>
     </>
