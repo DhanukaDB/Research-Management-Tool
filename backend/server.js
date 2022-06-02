@@ -32,7 +32,7 @@ app.use("/api/messages", require("./routes/messageRoutes"));
 
 //give feedback for the topics
 
-app.use("/api/sendFeedback",require ("./routes/evaluationTopics"));
+app.use("/api/sendFeedback",require ("./routes/topicEvaluateRoutes"));
 
 
 
@@ -40,10 +40,10 @@ app.use("/api/sendFeedback",require ("./routes/evaluationTopics"));
 app.use("/api/group", require("./routes/groups"));
 
 //Evaluated docs Router
-app.use("/api/evaluateDocs", require("./routes/evaluateDocs"));
+app.use("/api/evaluateDocs", require("./routes/docsEvaluateRoutes"));
 
 //Evaluated presentations Router
-app.use("/api/evaluatePres", require("./routes/evaluatePresentations"));
+app.use("/api/evaluatePres", require("./routes/presentationEvaRoutes"));
 
 //marking schemes uploading and downloading
 app.use(express.static(path.join(__dirname, '..', 'build')));
