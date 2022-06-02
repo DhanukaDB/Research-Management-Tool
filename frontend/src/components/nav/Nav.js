@@ -3,6 +3,8 @@ import { AppBar, Button, Tab, Tabs, Toolbar, Typography, useMediaQuery, useTheme
 import LogoutIcon from '@mui/icons-material/Logout';
 import Drawer from './Drawer';
 import logo from '../../asserts/logo.png';
+import DropDownRegister from './DropDownRegister';
+import DropDownLogin from './DropDownLogin';
 
 export default function Nav() {
     const [value, setValue] = useState();
@@ -33,9 +35,9 @@ export default function Nav() {
                                     }
                                 </Tabs>
                                 <Button href="/EvaluationsHome" sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>Evaluations</Button>
-                                <Button href="/register" sx={{ marginLeft: 'auto' }} variant='contained'>Register</Button>
-                                <Button href="/login" sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>Login</Button>
-                                <LogoutIcon />
+                                <DropDownRegister sx={{ marginLeft: 'auto' }} variant='contained' />
+                                <DropDownLogin sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained' />
+                                <LogoutIcon sx={{ marginLeft: 'auto' }} />
                             </>
                         )
                     }
