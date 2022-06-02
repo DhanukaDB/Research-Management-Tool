@@ -12,6 +12,7 @@ import EvaluationPres from './pages/evaluations/EvaluationPres'
 import EvaluationTopics from './pages/evaluations/EvaluationTopics'
 import MarkingUploading from './components/MarkingSchemesUploading/MarkingUploading';
 import FilesList from './components/MarkingSchemesUploading/FilesList';
+import Addmarkspresentation from './pages/evaluations/Addmarkspresentation';
 
 import DocumentSubmission from'./components/DocumentSubmission';
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/EvaluationTopics" element={<EvaluationTopics />} />
           <Route path="/MarkingUploading" element={<MarkingUploading />} />
           <Route path="/FilesList" element={<FilesList />} />
+          <Route path="/Addmarkspresentation" element={<Addmarkspresentation />} />
 
           <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
 
