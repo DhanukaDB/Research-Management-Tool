@@ -9,9 +9,9 @@ router.route("/add").post((req,res) => {
     const topic = req.body.topic;
     const status = req.body.status;
     const feedback = req.body.feedback;
+    const supervisor = req.body.supervisor;
 
-
-    if(!groupno || !topic || !status || !feedback ){
+    if(!groupno || !topic || !supervisor || !status || !feedback ){
         return res.status(422).json({error:"please add all the feilds"})
 
     }
@@ -26,6 +26,7 @@ router.route("/add").post((req,res) => {
     const newFeedback = new SendFeedbak({
         groupno,
         topic,
+        supervisor,
         status,
         feedback,
        
@@ -66,6 +67,7 @@ router.route("/update/:id").put(async (req, res) => {
       const updateTopic = {
         groupno,
         topic,
+        supervisor,
         staus,
         feedback
       }
