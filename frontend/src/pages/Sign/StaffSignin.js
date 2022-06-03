@@ -39,10 +39,10 @@ const StaffSignin = (props) => {
         }
          console.log(newStaff)  
 
-         axois.post("http://localhost:5000/api/auth/stafflogin", newStaff).then(() => {
+         axois.post("http://localhost:5000/api/auth/stafflogin", newStaff).then((res) => {
              alert("Login Success");
 
-            //  localStorage.setItem("authToken", res.data.token);
+              localStorage.setItem("authToken", res.data.token);
             //  localStorage.setItem("userRole", res.data.user.role);
 
              window.location = `/`;

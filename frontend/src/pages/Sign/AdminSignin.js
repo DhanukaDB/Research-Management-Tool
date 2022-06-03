@@ -1,68 +1,64 @@
 import React from "react";
-import {Link} from 'react-router-dom'
-import {Col,Image} from "react-bootstrap";
-import { useState,useEffect} from 'react';
+import { Col, Image } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import axois from "axios";
-import{Form,Button,Container,Row} from "react-bootstrap";
+import { Form, Button, Container, Row } from "react-bootstrap";
 
-
-const AdminSignin = (props) => {
-   
-  useEffect(()=>{
-
-    if(localStorage.getItem("authToken")){
+const AdminSignin = () => {
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
       window.location("/");
     }
-  },[])
-      const [email,setemail] = useState("")
-      const [password, setpassword] = useState("")
-    
-      function sendData(e) {
-        if(!email || !password){
-            alert("Please fill  in all  fields");
-            return
-        } 
+  }, []);
 
-        
-        else  if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-            alert("Invalid email");
-             return
-         }
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
-        e.preventDefault();
-        
-        const newAdmin ={
-
-          email,
-          password
-
-        }
-         console.log(newAdmin)  
-
-         axois.post("http://localhost:5000/api/auth/adminlogin", newAdmin).then(() => {
-             alert("Login Success");
-
-            //  localStorage.setItem("authToken", res.data.token);
-            //  localStorage.setItem("userRole", res.data.user.role);
-
-             window.location = `/adminpanel`;
-
-              setemail("");
-              setpassword("");
-
-
-         }).catch((err) =>{
-             alert(err)
-         })
+  const sendData = async (e) => {
+    if (!email || !password) {
+      alert("Please fill  in all  fields");
+      return;
+    } else if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+      )
+    ) {
+      alert("Invalid email");
+      return;
     }
 
+    e.preventDefault();
 
-    return(
-      <div>
+    const newAdmin = {
+      email,
+      password,
+    };
+    console.log(newAdmin);
+
+    await axois
+      .post("http://localhost:5000/api/auth/adminlogin", newAdmin)
+      .then((res) => {
+        alert("Login Success");
+        localStorage.setItem("authToken", res.data.token);
+        localStorage.setItem("userRole", res.data.user.role);
+
+        setemail("");
+        setpassword("");
+
+        window.location = `/adminpanel`;
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  return (
+    <div>
       <Container>
         <Row>
           <Col>
-            {" "}<br />
+            {" "}
+            <br />
             <Form className="container" onSubmit={sendData}>
               <div className="signin1">
                 <div className="signin">
@@ -101,7 +97,6 @@ const AdminSignin = (props) => {
                   <br />
                   <br />
                   <br />
-                
                 </div>
               </div>
             </Form>
@@ -112,16 +107,12 @@ const AdminSignin = (props) => {
             <br />
             <br />
             <br />
-            <Image
-              src="#"
-              fluid
-            />
+            <Image src="#" fluid />
           </Col>
         </Row>
       </Container>
     </div>
-   )  
- 
-}
+  );
+};
 
-export default AdminSignin
+export default AdminSignin;

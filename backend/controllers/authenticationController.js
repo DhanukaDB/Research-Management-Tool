@@ -20,7 +20,7 @@ exports.registerStudent = async (req, res, next) => {
     });
     sendToken(student, 200, res);
     // const token = await Student.getSignedToken();
-    res.status(201).json({ success: true, token, role: "student" });
+    // res.status(201).json({ success: true, token, role: "student" }); <------
   } catch (error) {
     res.status(500).json({
       error,

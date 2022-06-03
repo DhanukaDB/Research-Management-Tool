@@ -40,23 +40,24 @@ const FilesList = () => {
       }
    };
 
-  //delete
-  function deleteMarking(_id) {
-   axios
-     .delete(`${API_URL}/delete/${_id}`)
-     .then((res) => {
-       //console.log(res.data);
-     })
-     .catch((err) => {
-       alert(err);
-     });
- }
+   //delete
+   function deleteMarking(_id) {
+      axios
+         .delete(`${API_URL}/delete/${_id}`)
+         .then((res) => {
+            //console.log(res.data);
+            window.location = `/FilesList`;
+         })
+         .catch((err) => {
+            alert(err);
+         });
+   }
 
    return (
       <div className="files-container">
-         <br/>
-         <br/>
-         <br/>
+         <br />
+         <br />
+         <br />
          <h1>Marking Schemes</h1>
          {errorMsg && <p className="errorMsg">{errorMsg}</p>}
          <table className="files-table table-striped">
@@ -78,14 +79,14 @@ const FilesList = () => {
                            <a href="#/" onClick={() => downloadFile(_id, file_path, file_mimetype)}>
                               Download
                            </a>
-                           
+
                         </td>
                         <td><button
-              className="btn btn-sm markingButton"
-              onClick={() => {if (window.confirm('Are you sure you wish to delete this record?')) deleteMarking(_id)}}
-            >
-              <DeleteForeverIcon className="btn-icon" style={{color:red[600]}} fontSize="small"/>
-            </button></td>
+                           className="btn btn-sm markingButton"
+                           onClick={() => { if (window.confirm('Are you sure you wish to delete this record?')) deleteMarking(_id) }}
+                        >
+                           <DeleteForeverIcon className="btn-icon" style={{ color: red[600] }} fontSize="small" />
+                        </button></td>
                      </tr>
                   ))
                ) : (

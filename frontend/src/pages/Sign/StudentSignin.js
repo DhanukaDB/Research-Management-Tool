@@ -1,72 +1,67 @@
 import React from "react";
-import {Link} from 'react-router-dom'
-import {Col,Image} from "react-bootstrap";
-import { useState,useEffect} from 'react';
+import { Link } from "react-router-dom";
+import { Col, Image } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import axois from "axios";
-import{Form,Button,Container,Row} from "react-bootstrap";
-
+import { Form, Button, Container, Row } from "react-bootstrap";
 
 const StudentSignin = (props) => {
-   
-  useEffect(()=>{
 
-    if(localStorage.getItem("authToken")){
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
       window.location("/");
     }
-  },[])
-      const [email,setemail] = useState("")
-      const [password, setpassword] = useState("")
-    
-      function sendData(e) {
-        if(!email || !password){
-            alert("Please fill  in all  fields");
-            return
-        } 
+  }, []);
 
-        
-        else  if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-            alert("Invalid email");
-             return
-         }
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
-        e.preventDefault();
-        
-        const newStudent ={
+  const sendData = async (e) => {
+    e.preventDefault();
 
-          email,
-          password
-
-        }
-         console.log(newStudent)  
-         //alert("Success");
-
-
-         axois.post("http://localhost:5000/api/auth/studentlogin", newStudent).then(() => {
-             alert("Login Success");
-
-             localStorage.setItem("authToken", res.data.token);
-             localStorage.setItem("userRole", res.data.user.role);
-             
-             console.log(token)
-
-             window.location = `/`;
-
-              setemail("");
-              setpassword("");
-
-
-         }).catch((err) =>{
-             alert(err)
-         })
+    if (!email || !password) {
+      alert("Please fill  in all  fields");
+      return;
+    } else if (
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+      )
+    ) {
+      alert("Invalid email");
+      return;
     }
 
+    const newStudent = {
+      email,
+      password,
+    };
 
-    return(
-      <div>
+    await axois
+      .post("http://localhost:5000/api/auth/studentlogin", newStudent)
+      .then((res) => {
+        alert("Login Success");
+
+        localStorage.setItem("authToken", res.data.token);
+        localStorage.setItem("userRole", res.data.user.role);
+
+        setemail("");
+        setpassword("");
+
+        window.location = "/"
+
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
+  return (
+    <div style={{"padding-top":"5vh"}}>
       <Container>
         <Row>
           <Col>
-            {" "}<br />
+            {" "}
+            <br />
             <Form className="container" onSubmit={sendData}>
               <div className="signin1">
                 <div className="signin">
@@ -121,16 +116,12 @@ const StudentSignin = (props) => {
             <br />
             <br />
             <br />
-            <Image
-              src="#"
-              fluid
-            />
+            <Image src="#" fluid />
           </Col>
         </Row>
       </Container>
     </div>
-   )  
- 
-}
+  );
+};
 
-export default StudentSignin
+export default StudentSignin;

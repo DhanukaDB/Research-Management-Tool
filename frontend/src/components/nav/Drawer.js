@@ -15,6 +15,7 @@ export default function Drawer() {
                             <ListItemButton onClick={() => setOpenDrawer(false)} key={index}>
                                 <ListItemIcon>
                                     <ListItemText>{page}</ListItemText>
+                                    {/* {page === "Logout" && <ListItemText onClick={alert("LOGOUT PRESSED")}>{page}</ListItemText>} */}
                                 </ListItemIcon>
                             </ListItemButton>
                         ))
