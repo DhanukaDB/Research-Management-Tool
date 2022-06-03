@@ -61,7 +61,11 @@ const groupSchema = new Schema({
     topic : {
             type:String,
             require: true
-        }       
+        }  ,
+        status : {
+            type:String,
+           
+        }        
  
 })
 

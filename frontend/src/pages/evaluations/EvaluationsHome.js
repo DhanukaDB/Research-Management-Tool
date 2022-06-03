@@ -20,7 +20,7 @@ export default function EvaluationsHome() {
                 <Button href="/FilesList" color="inherit" variant="outlined">Marking Schemes</Button>
                 <Button href="/EvaluationDocs" color="inherit" variant="contained">Documents Evaluation</Button>
                 <Button href="/EvaluationPres" color="inherit" variant="outlined">Presentations Evaluation</Button>
-                <Button href="/Cosupervisorsreq" color="inherit" variant="contained">Request CoSupervisors</Button>
+                <Button href="/TopicAccept" color="inherit" variant="contained">Send Status for Topics</Button>
                </center>
                 <br/>
                 <br/>
