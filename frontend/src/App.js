@@ -11,6 +11,7 @@ import EvaluationTopics from './pages/evaluations/EvaluationTopics'
 import MarkingUploading from './components/MarkingSchemesUploading/MarkingUploading';
 import FilesList from './components/MarkingSchemesUploading/FilesList';
 import DocumentSubmission from './components/DocumentSubmission';
+import CreateChatGroups from './pages/chat/CreateChatGroups';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route exact path="/" element={<Home />} ></Route>
           <Route exact path="/adminpanel" element={<Admin />} ></Route>
           <Route exact path="/chat" element={<Chat />} />
+          <Route exact path="/group" element={<CreateChatGroups />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/AddmarksDocs" element={<AddmarksDocs />} />
           <Route path="/EvaluationsHome" element={<EvaluationsHome />} />
