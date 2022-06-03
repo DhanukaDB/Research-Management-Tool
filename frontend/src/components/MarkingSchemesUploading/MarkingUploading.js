@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { API_URL } from './utils/constants';
 import Header from './Header';
-// import './markingStyles.css';
+ import './markingStyles.css';
 import noFilesImage from '../../asserts/no-files-found.png';
 import noPreviewAvailable from '../../asserts/no-preview-img.png';
 import uploadImage from '../../asserts/upload-icon.png';
