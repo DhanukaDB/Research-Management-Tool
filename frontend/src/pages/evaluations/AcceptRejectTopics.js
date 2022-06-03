@@ -53,7 +53,6 @@ function AcceptRejectTopics() {
       status,
       coSupName
     }
-
     axios.put(`http://localhost:5000/api/group//update/${id}`, updateDetails).then(() => {
       alert("Sent sucessfully");
       window.location = `/TopicAccept`;
