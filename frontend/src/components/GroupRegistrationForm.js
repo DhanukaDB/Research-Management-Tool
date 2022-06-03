@@ -3,6 +3,8 @@ import axios from "axios";
 import { Button, Container, Form} from "react-bootstrap";
 import {Link} from "react-router-dom";
  import './Submission.css';
+ import Nav from './nav/Nav';
+
 export default function GroupRegistrationForm(){  //adding function
 
     //creating states
@@ -44,8 +46,7 @@ export default function GroupRegistrationForm(){  //adding function
 
     return(
  <div className="container">
-   
-
+    <Nav/>
 <br/><br/><br/><br/>
 
 <div className="greg">
@@ -149,10 +150,14 @@ export default function GroupRegistrationForm(){  //adding function
   
   <br/>
   <center>
-  <Button type="submit"  class="btn btn-primary btn-lg btn-block" >Submit</Button>  
+  <div className="d-grid gap-2">
+  <Button variant="primary" size="lg" type="submit">
+   Submit
+  </Button>
+  </div>
+   
   </center>
-   
-   
+  
  
     
         

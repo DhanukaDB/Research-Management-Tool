@@ -18,7 +18,9 @@ import ReqCosupervisor from './pages/reqCosuperisor/ReqCosupervisor'
 import Cosupervisorsreq from './pages/reqCosuperisor/Cosupervisorsreq'
 import DocumentSubmission from './components/DocumentSubmission';
 import GroupRegistrationForm from './components/GroupRegistrationForm';
-
+import StudentUpoadList from './components/StudentUploadList';
+import SubmissionUploading from './components/AdminCreateSubmission/SubmissionUploading';
+import AdminSubList from './components/AdminCreateSubmission/AdminSubList';
 
 const App = () => {
   return (
@@ -44,8 +46,12 @@ const App = () => {
           <Route path="/GiveFeedbackTopics" element={<GiveFeedbackTopics />} />
           <Route path="/ReqCosupervisor/:id" element={<ReqCosupervisor />} />
           <Route path="/Cosupervisorsreq" element={<Cosupervisorsreq />} />
-          <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
+          <Route exact path="/submissions" element={<DocumentSubmission />} ></Route>
           <Route exact path="/groupreg" element={<GroupRegistrationForm />} ></Route>
+          <Route exact path="/sUploadList" element={<StudentUpoadList/>} ></Route>
+          
+          <Route path="/SubmissionUploading" element={<SubmissionUploading/>} />
+          <Route path="/AdminSubList" element={<AdminSubList />} />  
         </Routes>
       </Router>
     </>

@@ -9,7 +9,7 @@ const cardDetails = [
         id : 2,
         img : "https://th.bing.com/th/id/R.7cd4e5706690bd28efbdff437210d3da?rik=BlYz%2fJnZ%2f%2fgZ7A&pid=ImgRaw&r=0",
         name : "CREATE SUBMISSIONS",
-        navigate : "/submissions"
+        navigate : "/SubmissionUploading"
     },
     {
         id : 3,
