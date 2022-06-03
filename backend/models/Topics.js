@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const feedbackTopicSchema = new Schema({
+const topicSchema = new Schema({
 
 groupno : {
         type : String,
@@ -11,21 +11,18 @@ groupno : {
             type : String,
             require: true
       },   
-      supervisor : {
-            type : String,
-            require: true
-      }, 
-  status : {
+  staus : {
         type : String,
         require: true
   }, 
+
   feedback : {
     type : String,
     require: true
-}, 
-  
+}
+
 })
 
-const sendFeedback = mongoose.model("SendFeedback", feedbackTopicSchema);
+const EvaluateTopic = mongoose.model("EvaluateTopic", topicSchema);
 
-module.exports = sendFeedback;
+module.exports = EvaluateTopic;
