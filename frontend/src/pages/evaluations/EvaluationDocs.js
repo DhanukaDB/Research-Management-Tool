@@ -7,7 +7,8 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { red } from '@mui/material/colors';
-
+import AddIcon from '@mui/icons-material/Add';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 export default function EvaluationDocs() {
 
@@ -110,13 +111,16 @@ export default function EvaluationDocs() {
           <h1>Evaluation of Documents</h1>
         </center>
         <hr />
+        <br />
         <input className="search1"
           style={{ width: "10%", height: "30px" }}
           type="text"
           placeholder=" Document Title "
           onChange={(e) => setSearchTitle(e.target.value)} />
 
-        <br />
+   
+<br />
+<br />
         <table className="table table-bordered detailTable" id="my-table">
           <thead className="bg-dark text-light">
             <tr className="detailRaw">
@@ -167,13 +171,14 @@ export default function EvaluationDocs() {
           )}
 
         </table>
-
+<br/>
+<br/>
         <center>
           <Link to={"/AddmarksDocs"} className="btn btn-warning btn-sm">
-            ADD DETAILS
+            ADD DETAILS<AddIcon/>
           </Link>
           &nbsp;&nbsp;
-          <button type="button" class="btn btn-danger btn sm" onClick={() => createPdf()}> Download PDF</button>
+          <button type="button" class="btn btn-danger btn sm" onClick={() => createPdf()} variant="outlined"> Download PDF<PictureAsPdfIcon/></button>
           &nbsp;&nbsp;
           {/* <Link to="/Service">
             <button className="btn btn-danger"style={{backgroundColor:blueGrey[300]}}>CANCEL</button>

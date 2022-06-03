@@ -39,6 +39,7 @@ function AddmarksPres() {
             <div className="marksBody">
                 <div className="container col-6" onSubmit={sendMarksData}>
                     <form className="addMarks">
+                    <center>  <h3>Presentations Evaluations</h3></center>
                         <div className="form-group">
                             <label for="exampleInputmonth">Presentation Title</label>
                             <select id="inputState" className="form-control" onChange={(e) => {

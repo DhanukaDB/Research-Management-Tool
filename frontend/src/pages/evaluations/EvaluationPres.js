@@ -7,7 +7,8 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { red } from '@mui/material/colors';
-
+import AddIcon from '@mui/icons-material/Add';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 export default function EvaluationPres() {
 
@@ -115,7 +116,7 @@ export default function EvaluationPres() {
           type="text"
           placeholder=" Presentation Title "
           onChange={(e) => setSearchTitle(e.target.value)} />
-
+<br/>
 
         <table className="table table-bordered detailTable" id="my-table">
           <thead className="bg-dark text-light">
@@ -171,13 +172,14 @@ export default function EvaluationPres() {
           )}
 
         </table>
-
+        <br/>
+<br/>
         <center>
           <Link to={"/Addmarkspresentation"} className="btn btn-warning btn-sm">
-            ADD DETAILS
+            ADD DETAILS<AddIcon/>
           </Link>
           &nbsp;&nbsp;
-          <button type="button" class="btn btn-danger btn sm" onClick={() => createPdf()}> Download PDF</button>
+          <button type="button" class="btn btn-danger btn sm" onClick={() => createPdf()} variant="outlined"> Download PDF<PictureAsPdfIcon/></button>
           &nbsp;&nbsp;
           {/* <Link to="/Service">
             <button className="btn btn-danger"style={{backgroundColor:blueGrey[300]}}>CANCEL</button>
@@ -190,3 +192,7 @@ export default function EvaluationPres() {
   )
 
 }     
+
+
+
+

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { API_URL } from './utils/constants';
 import Header from './Header';
-// import './markingStyles.css';
+ import './markingStyles.css';
 import noFilesImage from '../../asserts/no-files-found.png';
 import noPreviewAvailable from '../../asserts/no-preview-img.png';
 import uploadImage from '../../asserts/upload-icon.png';
@@ -94,6 +94,7 @@ const MarkingUploading = (props) => {
                <Row>
                   <Col>
                      <Form.Group controlId="title">
+                     <label><b>Title</b></label>
                         <Form.Control type="text" name="title" value={state.title || ''} placeholder="Enter a Title" onChange={handleInputChange} />
                      </Form.Group>
                   </Col>
@@ -101,6 +102,7 @@ const MarkingUploading = (props) => {
                <Row>
                   <Col>
                      <Form.Group controlId="description">
+                     <label><b>Enter Description</b></label>
                         <Form.Control type="text" name="description" className="desc-input" value={state.description || ''} placeholder="Enter a Description" onChange={handleInputChange} />
                      </Form.Group>
                   </Col>

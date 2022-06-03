@@ -38,7 +38,7 @@ app.use("/api/sendFeedback",require ("./routes/topicEvaluateRoutes"));
 
 
 //Group Router
-// app.use("/api/group", require("./routes/groups"));
+app.use("/api/group", require("./routes/groupRoutes"));
 
 //Evaluated docs Router
 app.use("/api/evaluateDocs", require("./routes/docsEvaluateRoutes"));
