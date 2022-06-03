@@ -26,14 +26,14 @@ exports.getStudentProfile = async (req,res) =>{
 
 //update cutomer profile
 exports.updateStudentProfile = async (req,res) => {
-    const {username,email,address,phone} = req.body;
+    const {name,email,contactNumber,password} = req.body;
 
     try{
         const newData = {
-            username,
+            name,
             email,
-            address,
-            phone
+            contactNumber,
+            password
         };
 
         const updatedstudent = await Student.findByIdAndUpdate(

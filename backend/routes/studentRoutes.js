@@ -15,7 +15,7 @@ const {
     // getInvoice
 } = require("../controllers/studentController");
 
-//customer profile routes
+//student profile routes
 
 router.route("/profile").get(protectedStudent,getStudentProfile);
 router.route("/updateProfile").put(protectedStudent,updateStudentProfile);

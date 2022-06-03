@@ -16,6 +16,10 @@ import FilesList from './components/MarkingSchemesUploading/FilesList';
 import DocumentSubmission from'./components/DocumentSubmission';
 
 
+import StudentSignup from './pages/Sign/StudentSignup' ;
+import StudentSignin from './pages/Sign/StudentSignin';
+import StaffSignup from './pages/Sign/StaffSignup';
+
 const App = () => {
   return (
     <>
@@ -35,6 +39,9 @@ const App = () => {
 
           <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
 
+          <Route exact path="/studentsignup" element={<StudentSignup />} ></Route>
+          <Route exact path="/studentsignin" element={<StudentSignin />} ></Route>
+          <Route exact path="/staffsignup" element={<StaffSignup />} ></Route>
         </Routes>
       </Router>
     </>
