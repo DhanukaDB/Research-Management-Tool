@@ -39,7 +39,7 @@ function GiveFeedbackTopics() {
                 <div className="container col-6" onSubmit={sendFeedback}>
                     <form className="addMarks">
 
-                        <br />
+                  <center>  <h3>Topic Evaluations</h3></center>
                         <div className="form-group">
                             <label for="exampleInputEntryDate1">Group ID</label>
                             <input

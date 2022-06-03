@@ -94,6 +94,7 @@ const MarkingUploading = (props) => {
                <Row>
                   <Col>
                      <Form.Group controlId="title">
+                     <label><b>Title</b></label>
                         <Form.Control type="text" name="title" value={state.title || ''} placeholder="Enter a Title" onChange={handleInputChange} />
                      </Form.Group>
                   </Col>
@@ -101,6 +102,7 @@ const MarkingUploading = (props) => {
                <Row>
                   <Col>
                      <Form.Group controlId="description">
+                     <label><b>Enter Description</b></label>
                         <Form.Control type="text" name="description" className="desc-input" value={state.description || ''} placeholder="Enter a Description" onChange={handleInputChange} />
                      </Form.Group>
                   </Col>
