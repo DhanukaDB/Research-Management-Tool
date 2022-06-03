@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const path = require('path');
 const fileRoute = require('./routes/markinguploads')
 require("dotenv").config();
+const Chat = require('./modules/chat/chat');
 
 const URL = process.env.MONGODB_URL;
 
@@ -26,17 +27,12 @@ connection.once("open", () => {
 });
 
 app.use('/api/auth', require('./routes/authenticationRoutes'));
-
-// //Chat Router
-// app.use("/api/messages", require("./routes/messageRoutes"));
-
+//give feedback for the topics
+//app.use("/api/sendFeedback", require("./routes/evaluationTopics"));
 
 //give feedback for the topics
 
-app.use("/api/sendFeedback",require ("./routes/topicEvaluateRoutes"));
-
-
-
+app.use("/api/sendFeedback", require("./routes/topicEvaluateRoutes"));
 //Group Router
 app.use("/api/group", require("./routes/groupRoutes"));
 
@@ -51,8 +47,11 @@ app.use(express.static(path.join(__dirname, '..', 'build')));
 app.use(fileRoute);
 
 app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
+//Student Document Submission Router
+//const submissionRouter = require("./routes/submission");
+//app.use("/submission", submissionRouter);
 
 
 // //Student Document Submission Router
@@ -70,4 +69,7 @@ const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
 })
+
+//Chat
+new Chat(server).init();
 
