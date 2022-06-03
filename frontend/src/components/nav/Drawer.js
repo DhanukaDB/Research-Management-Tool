@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Drawer() {
     const [openDrawer, setOpenDrawer] = useState(false);
-    const ITEMS = ["Register", "Login", "Group", "Chat", "Logout"];
+    const ITEMS = ["Home", "Register", "Login", "Group", "Chat", "Logout"];
 
     return (
         <React.Fragment>
