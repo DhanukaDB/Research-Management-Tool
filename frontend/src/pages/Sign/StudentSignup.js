@@ -70,33 +70,34 @@ const StudentSignup = () => {
   <Row>
     <Col>  <br/><br/><br/><br/><br/><br/><br/><br/><br/>
      <Image src="#" fluid /></Col>
-    <Col>  <Form className="container" onSubmit={sendData} >
-          <div className = "signin1">
-            <div className= "signin">
-          <Col xs={1} md={12}  >
-                <Image  className="im" src="https://res.cloudinary.com/hidl3r/image/upload/v1631611510/itp/ulogin_b64etx.png" roundedCircle />
-                <br/> <br/>
-              </Col>
+          <Col>  <Form className="container" onSubmit={sendData} >
+                  <div className = "signin1">
+                    <div className= "signin">
+                       <Col xs={1} md={12}  >
+                        <Image  className="im" src="https://res.cloudinary.com/hidl3r/image/upload/v1631611510/itp/ulogin_b64etx.png" roundedCircle />
+                        <br/>
+                        <br/>
+        </Col>
  
                 <h1 className="login">Student Sign Up</h1>
-                <Form.Group className="mb-3" controlId="formBasicUsername">
-                     <Form.Control type="text" placeholder="Enter ID"  value = {studentID}
-                        onChange={(e) => setstudentID (e.target.value)} />
-               </Form.Group>
+                   <Form.Group className="mb-3" controlId="formBasicUsername">
+                   <Form.Control type="text" placeholder="Enter ID"  value = {studentID}
+                   onChange={(e) => setstudentID (e.target.value)} />
+                  </Form.Group>
                 <br/>
                
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                      <Form.Control type="text" placeholder="Enter Name"  value = {name}
-                        onChange={(e) => setname (e.target.value)} />
+                     onChange={(e) => setname (e.target.value)} />
      
                 </Form.Group>
 
                 <br/>
                <Form.Group className="mb-3" controlId="formBasicPhoneno">
-                     <Form.Control type="email" placeholder="Enter email"  value = {email}
-                        onChange={(e) => setemail (e.target.value)} />
+                    <Form.Control type="email" placeholder="Enter email"  value = {email}
+                    onChange={(e) => setemail (e.target.value)} />
      
-                     </Form.Group>
+               </Form.Group>
                 <br/>
                 
                <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -109,22 +110,26 @@ const StudentSignup = () => {
                <Form.Control type="password" placeholder="Password" value = {password}
                   onChange={(e) => setpassword (e.target.value)}/>
                </Form.Group><br/>
-       <Button variant="primary" size="lg" type="submit">
-           Sign Up
-      </Button>
-      <br/><br/>
-       <h5>
-       <Link to = "/studentsignin">Already have an account?  </Link>
-      </h5>
+      
+             <Button variant="primary" size="lg" type="submit">
+                             Sign Up
+            </Button>
+
       <br/>
-               </div>
+      <br/>
+                      <h5>
+                      <Link to = "/studentsignin">Already have an account?  </Link>
+                      </h5>
+                  <br/>
+              </div>
            </div>
-         </Form></Col>
-  </Row>
+         </Form>
+         </Col>
+        </Row>
  
 </Container>
         
-      </div>
+   </div>
    )  
  
 }

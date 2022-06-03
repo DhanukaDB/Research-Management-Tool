@@ -1,138 +1,134 @@
-import * as React from 'react';
-import {Link,useNavigate} from  'react-router-dom'
+import React from "react";
+import {Link} from 'react-router-dom'
+import {Col,Image} from "react-bootstrap";
 import { useState,useEffect} from 'react';
 import axois from "axios";
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://sliit.lk">
-        Research Management SLIIT
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const theme = createTheme();
+import{Form,Button,Container,Row} from "react-bootstrap";
 
 
-export default function StudentSignin() {
-    
+const StudentSignin = (props) => {
    
-    const [email,setemail] = useState("")
-    const [password, setPassword] = useState("")
-  
-    const navigate = useNavigate();
+  useEffect(()=>{
 
-  const handleSubmit = (event) => {
-
-
-    event.preventDefault();
-
-    const newStudent ={
-        email,
-        password
+    if(localStorage.getItem("authToken")){
+      window.location("/");
     }
+  },[])
+      const [email,setemail] = useState("")
+      const [password, setpassword] = useState("")
     
-    axois.post("http://localhost:5000/api/auth/studentlogin", newStudent).then(() => {
-             alert("Sign in successfully")
+      function sendData(e) {
+        if(!email || !password){
+            alert("Please fill  in all  fields");
+            return
+        } 
 
-             navigate("/");
+        
+        else  if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+            alert("Invalid email");
+             return
+         }
 
-             setemail("");
-             setPassword("");
+        e.preventDefault();
+        
+        const newStudent ={
+
+          email,
+          password
+
+        }
+         console.log(newStudent)  
+         //alert("Success");
+
+
+         axois.post("http://localhost:5000/api/auth/studentlogin", newStudent).then(() => {
+             alert("Login Success");
+
+             localStorage.setItem("authToken", res.data.token);
+             localStorage.setItem("userRole", res.data.user.role);
+
+             window.location = `/`;
+
+              setemail("");
+              setpassword("");
+
 
          }).catch((err) =>{
-             
-            alert("Invalid email or password")
+             alert(err)
          })
+    }
 
 
-  };
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-           Student Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
+    return(
+      <div>
+      <Container>
+        <Row>
+          <Col>
+            {" "}<br />
+            <Form className="container" onSubmit={sendData}>
+              <div className="signin1">
+                <div className="signin">
+                  <Col xs={1} md={12}>
+                    <Image
+                      className="im"
+                      src="https://res.cloudinary.com/hidl3r/image/upload/v1631611510/itp/ulogin_b64etx.png"
+                      roundedCircle
+                    />
+                  </Col>
+                  <h1 className="login">Student Sign In</h1>
+                  <br /> <br />
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter email"
+                      value={email}
+                      onChange={(e) => setemail(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Control
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setpassword(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label="Check me out" />
+                  </Form.Group>
+                  <br /> <br />
+                  <Button variant="primary" size="lg" type="submit">
+                    Sign In
+                  </Button>
+                  <br />
+                  <br />
+                  <br />
+                  <h5>
+                    <Link to="/studentsignup" id="link">
+                      {" "}
+                      Don't have an account?{" "}
+                    </Link>
+                  </h5>
+                </div>
+              </div>
+            </Form>
+          </Col>
+          <Col>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Image
+              src="#"
+              fluid
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/studentsignup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+          </Col>
+        </Row>
       </Container>
-    </ThemeProvider>
-  );
+    </div>
+   )  
+ 
 }
+
+export default StudentSignin

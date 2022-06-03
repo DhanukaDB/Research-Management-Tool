@@ -10,7 +10,7 @@ const {
     getStudentProfile,
     updateStudentProfile,
     deleteStudentProfile,
-    home,
+    allProfiles,
 
     // getInvoice
 } = require("../controllers/studentController");
@@ -20,6 +20,6 @@ const {
 router.route("/profile").get(protectedStudent,getStudentProfile);
 router.route("/updateProfile").put(protectedStudent,updateStudentProfile);
 router.route("/deleteProfile").delete(protectedStudent,deleteStudentProfile);
-router.route("/home").get(protectedStudentAndStaff,home);
+router.route("/allProfiles").get(protectedStudentAndStaff,allProfiles);
 
 module.exports = router; 

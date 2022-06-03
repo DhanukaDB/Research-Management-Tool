@@ -6,7 +6,7 @@ import axois from "axios";
 import{Form,Button,Container,Row} from "react-bootstrap";
 
 
-const StaffSignin = (props) => {
+const AdminSignin = (props) => {
    
   useEffect(()=>{
 
@@ -31,21 +31,21 @@ const StaffSignin = (props) => {
 
         e.preventDefault();
         
-        const newStaff ={
+        const newAdmin ={
 
           email,
           password
 
         }
-         console.log(newStaff)  
+         console.log(newAdmin)  
 
-         axois.post("http://localhost:5000/api/auth/stafflogin", newStaff).then(() => {
+         axois.post("http://localhost:5000/api/auth/adminlogin", newAdmin).then(() => {
              alert("Login Success");
 
             //  localStorage.setItem("authToken", res.data.token);
             //  localStorage.setItem("userRole", res.data.user.role);
 
-             window.location = `/`;
+             window.location = `/adminpanel`;
 
               setemail("");
               setpassword("");
@@ -73,7 +73,7 @@ const StaffSignin = (props) => {
                       roundedCircle
                     />
                   </Col>
-                  <h1 className="login">Staff Sign In</h1>
+                  <h1 className="login">Administrator Account Login</h1>
                   <br /> <br />
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control
@@ -101,12 +101,7 @@ const StaffSignin = (props) => {
                   <br />
                   <br />
                   <br />
-                  <h5>
-                    <Link to="/staffsignup" id="link">
-                      {" "}
-                      Don't have an account?{" "}
-                    </Link>
-                  </h5>
+                
                 </div>
               </div>
             </Form>
@@ -129,4 +124,4 @@ const StaffSignin = (props) => {
  
 }
 
-export default StaffSignin
+export default AdminSignin

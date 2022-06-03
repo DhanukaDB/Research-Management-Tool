@@ -157,7 +157,7 @@ exports.staffLogin = async (req, res, next) => {
 };
 
 exports.adminLogin = async (req, res, next) => {
-  const { email, password, role } = req.body;
+  const { email, password } = req.body;
 
   if (!email || !password) {
     res.status(400).json({

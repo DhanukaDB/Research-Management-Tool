@@ -19,6 +19,9 @@ import DocumentSubmission from'./components/DocumentSubmission';
 import StudentSignup from './pages/Sign/StudentSignup' ;
 import StudentSignin from './pages/Sign/StudentSignin';
 import StaffSignup from './pages/Sign/StaffSignup';
+import StaffSignin from './pages/Sign/StaffSignin';
+import AdminSignin from './pages/Sign/AdminSignin';
+
 
 const App = () => {
   return (
@@ -42,6 +45,8 @@ const App = () => {
           <Route exact path="/studentsignup" element={<StudentSignup />} ></Route>
           <Route exact path="/studentsignin" element={<StudentSignin />} ></Route>
           <Route exact path="/staffsignup" element={<StaffSignup />} ></Route>
+          <Route exact path="/staffsignin" element={<StaffSignin />} ></Route>
+          <Route exact path="/adminsignin" element={<AdminSignin />} ></Route>
         </Routes>
       </Router>
     </>

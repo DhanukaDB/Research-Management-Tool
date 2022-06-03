@@ -87,11 +87,13 @@ exports.deleteStudentProfile = async(req,res) =>{
 };
 
 
-exports.home =  (req,res) =>{
+exports.allProfiles =  (req,res) =>{
     
-            res.status(200).json({
-               success:true,
-            data:"access granted "
-        })
-            
+    Student.find().then((Students) => {
+        res.json(Students)
+
+    }).catch((err) => {
+        console.log(err)
+    })
+    
 };
