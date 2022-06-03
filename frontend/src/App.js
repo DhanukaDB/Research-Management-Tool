@@ -16,6 +16,7 @@ import Addmarkspresentation from './pages/evaluations/Addmarkspresentation';
 import GiveFeedbackTopics from './pages/evaluations/GiveFeedbackTopics'
 
 import DocumentSubmission from'./components/DocumentSubmission';
+import GroupRegistrationForm from './components/GroupRegistrationForm';
 
 
 const App = () => {
@@ -30,16 +31,16 @@ const App = () => {
           <Route path="/AddmarksDocs" element={<AddmarksDocs />} />
           <Route path="/EvaluationsHome" element={<EvaluationsHome />} />
           <Route path="/EvaluationDocs" element={<EvaluationDocs />} />
-          <Route path="/EvaluationPres" element={<EvaluationPres />} />
+          <Route path="/EvaluationPres" element={<EvaluationPres />} />    
           <Route path="/EvaluationTopics" element={<EvaluationTopics />} />
           <Route path="/MarkingUploading" element={<MarkingUploading />} />
-          <Route path="/FilesList" element={<FilesList />} />
+          <Route path="/FilesList" element={<FilesList />} />   
           <Route path="/Addmarkspresentation" element={<Addmarkspresentation />} />
           <Route path="/GiveFeedbackTopics" element={<GiveFeedbackTopics />} />
 
 
           <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
-
+           <Route exact path="/groupreg" element={<GroupRegistrationForm/>} ></Route>
         </Routes>
       </Router>
     </>
