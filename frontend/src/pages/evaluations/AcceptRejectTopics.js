@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import '../evaluations/evaluations.css';
 
-function ReqCosupervisor() {
+function AcceptRejectTopics() {
   const [studentID1, setstudentID1] = useState("");
   const [studentID2, setstudentID2] = useState("");
   const [studentID3, setstudentID3] = useState("");
@@ -53,10 +53,9 @@ function ReqCosupervisor() {
       status,
       coSupName
     }
-
     axios.put(`http://localhost:5000/api/group//update/${id}`, updateDetails).then(() => {
       alert("Sent sucessfully");
-      window.location = `/Cosupervisorsreq`;
+      window.location = `/TopicAccept`;
 
     }).catch((err) => {
       alert(err);
@@ -170,19 +169,19 @@ function ReqCosupervisor() {
             }}disabled
           />
         </div> */}
-         <div className="form-group">
-            <label htmlFor="exampleInputCategory">Status</label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputexpenseCategory1"
-              value={status}
-              onChange={(e) => {
-                setstatus(e.target.value);
-              }} disabled
-            />
-            </div>
-          <div className="form-group">
+        <div className="form-group">
+            <label for="exampleInputmonth">Status</label>
+            <select id="inputState" className="form-control" onChange={(e) => {
+              setstatus(e.target.value); 
+            }} >
+              <option value={status}></option>
+              <option value="Accepted">Accepted</option>
+              <option value="Rejected">Rejected</option>
+
+
+            </select>
+          </div>
+          {/* <div className="form-group">
             <label for="exampleInputmonth">Request Co Supervisor</label>
             <select id="inputState" className="form-control" onChange={(e) => {
               setcoSupName(e.target.value); 
@@ -197,7 +196,7 @@ function ReqCosupervisor() {
 
 
             </select>
-          </div>
+          </div> */}
           <button type="submit" className="btn btn-success">
             Send
           </button>
@@ -210,4 +209,4 @@ function ReqCosupervisor() {
     </>
   );
 }
-export default ReqCosupervisor;
+export default AcceptRejectTopics;

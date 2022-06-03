@@ -16,7 +16,13 @@ import Addmarkspresentation from './pages/evaluations/Addmarkspresentation';
 import GiveFeedbackTopics from './pages/evaluations/GiveFeedbackTopics'
 import ReqCosupervisor from './pages/reqCosuperisor/ReqCosupervisor'
 import Cosupervisorsreq from './pages/reqCosuperisor/Cosupervisorsreq'
+
+import AcceptRejectTopics from './pages/evaluations/AcceptRejectTopics'
+import TopicAccept from './pages/evaluations/TopicAccept'
+
+
 import DocumentSubmission from './components/DocumentSubmission';
+
 import GroupRegistrationForm from './components/GroupRegistrationForm';
 
 
@@ -44,6 +50,11 @@ const App = () => {
           <Route path="/GiveFeedbackTopics" element={<GiveFeedbackTopics />} />
           <Route path="/ReqCosupervisor/:id" element={<ReqCosupervisor />} />
           <Route path="/Cosupervisorsreq" element={<Cosupervisorsreq />} />
+
+          <Route path="/AcceptRejectTopics/:id" element={<AcceptRejectTopics />} />
+
+          <Route path="/TopicAccept" element={<TopicAccept />} />
+
           <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
           <Route exact path="/groupreg" element={<GroupRegistrationForm />} ></Route>
         </Routes>

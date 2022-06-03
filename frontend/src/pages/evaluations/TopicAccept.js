@@ -114,7 +114,7 @@ export default function Cosupervisorsreq() {
         <input className="search1"
           style={{ width: "10%", height: "30px" }}
           type="text"
-          placeholder="Student 1 ID "
+          placeholder=" Student 1 ID"
           onChange={(e) => setSearchTitle(e.target.value)} />
 
 
@@ -165,7 +165,7 @@ export default function Cosupervisorsreq() {
                   <td className="presentationmarks">{reqCo.coSupName}</td>
                   <td>
                     <Link
-                      to={`/ReqCosupervisor/${reqCo._id}`}
+                      to={`/AcceptRejectTopics/${reqCo._id}`}
                       className="btn btn-sm expenseButton"
                     > <UpdateIcon className="btn-icon" style={{ color: green[600] }} fontSize="small" />
                     </Link>
