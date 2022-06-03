@@ -12,7 +12,7 @@ const {
     home,
 
     // getInvoice
-} = require("../controllers/studentController");
+} = require("../controllers/adminController");
 
 //Admin profile routes
 

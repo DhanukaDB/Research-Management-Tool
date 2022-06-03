@@ -46,6 +46,8 @@ const StudentSignin = (props) => {
 
              localStorage.setItem("authToken", res.data.token);
              localStorage.setItem("userRole", res.data.user.role);
+             
+             console.log(token)
 
              window.location = `/`;
 

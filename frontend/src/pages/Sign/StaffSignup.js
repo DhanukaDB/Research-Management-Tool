@@ -12,11 +12,12 @@ const StaffSignup = () => {
     const [name, setname] = useState("");
     const [email, setemail] = useState("");
     const [role, setrole] = useState("");
+    const [researchfield, setresearchfield] = useState("");
     const [password, setpassword] = useState("");
     
     function sendData(e) {
 
-        if(!staffID || !name || !email || !password){
+        if(!staffID || !name || !email || !researchfield || !password){
             alert("Please fill  in all  fields");
             return
         } 
@@ -36,6 +37,7 @@ const StaffSignup = () => {
             name,
             email,
             role,
+            researchfield,
             password
     
         }
@@ -51,6 +53,7 @@ const StaffSignup = () => {
             setname("");
             setemail("");
             setrole("");
+            setresearchfield("");
             setpassword("");
 
 
@@ -76,39 +79,45 @@ const StaffSignup = () => {
  
                 <h1 className="login">Staff Sign Up</h1>
                 <Form.Group className="mb-3" controlId="formBasicUsername">
-                     <Form.Control type="text" placeholder="Enter ID"  value = {staffID}
+                     <Form.Control type="text" required placeholder="Enter ID"  value = {staffID}
                         onChange={(e) => setstaffID (e.target.value)} />
                </Form.Group>
                 <br/>
                
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                     <Form.Control type="text" placeholder="Enter Name"  value = {name}
+                     <Form.Control type="text" required placeholder="Enter Name"  value = {name}
                         onChange={(e) => setname (e.target.value)} />
      
                 </Form.Group>
 
                 <br/>
                <Form.Group className="mb-3" controlId="formBasicPhoneno">
-                     <Form.Control type="email" placeholder="Enter email"  value = {email}
+                     <Form.Control type="email" required placeholder="Enter email"  value = {email}
                         onChange={(e) => setemail (e.target.value)} />
      
                      </Form.Group>
                 <br/>
                 
                <Col sm>
-                    <FloatingLabel controlId="floatingSelectGrid" label="Select">
-                    <Form.Select aria-label="Floating label select example">
-                        <option value="supervisor">supervisor</option>
-                        <option value="co-supervisor">co-supervisor</option>
-                        <option value="pannel-member">pannel-member</option>
-                        onChange={(e) => setrole (e.target.value)}
-                    </Form.Select>
-                    </FloatingLabel>
+                    <Form.Group controlId="floatingSelectGrid" label="Select">
+                    <Form.Select onChange={(e) => setrole (e.target.value)} aria-label="Floating label select example">
+                        <option value={role}>supervisor</option>
+                        <option value={role}>co-supervisor</option>
+                        <option value={role}>pannel-member</option>
+                       
+                    </Form.Select >
+                    </Form.Group>
                 </Col>
+
+                <br/>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+               <Form.Control type="researchfield" required placeholder="Research field" value = {researchfield}
+                  onChange={(e) => setresearchfield (e.target.value)}/>
+               </Form.Group><br/>
  
               <br/>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-               <Form.Control type="password" placeholder="Password" value = {password}
+               <Form.Control type="password" required placeholder="Password" value = {password}
                   onChange={(e) => setpassword (e.target.value)}/>
                </Form.Group><br/>
        <Button variant="primary" size="lg" type="submit">

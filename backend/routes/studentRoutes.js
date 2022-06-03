@@ -20,6 +20,6 @@ const {
 router.route("/profile").get(protectedStudent,getStudentProfile);
 router.route("/updateProfile").put(protectedStudent,updateStudentProfile);
 router.route("/deleteProfile").delete(protectedStudent,deleteStudentProfile);
-router.route("/allProfiles").get(protectedStudentAndStaff,allProfiles);
+router.route("/allProfiles").get(allProfiles);
 
 module.exports = router; 

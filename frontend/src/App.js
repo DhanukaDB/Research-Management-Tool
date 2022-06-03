@@ -22,6 +22,8 @@ import StaffSignup from './pages/Sign/StaffSignup';
 import StaffSignin from './pages/Sign/StaffSignin';
 import AdminSignin from './pages/Sign/AdminSignin';
 
+import StaffList from './pages/screens/Stafflist';
+import StudentList from './pages/screens/StudentList';
 
 const App = () => {
   return (
@@ -47,6 +49,9 @@ const App = () => {
           <Route exact path="/staffsignup" element={<StaffSignup />} ></Route>
           <Route exact path="/staffsignin" element={<StaffSignin />} ></Route>
           <Route exact path="/adminsignin" element={<AdminSignin />} ></Route>
+
+          <Route exact path="/stafflist" element={<StaffList />} ></Route>
+          <Route exact path="/studentlist" element={<StudentList />} ></Route>
         </Routes>
       </Router>
     </>

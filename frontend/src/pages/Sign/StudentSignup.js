@@ -81,33 +81,33 @@ const StudentSignup = () => {
  
                 <h1 className="login">Student Sign Up</h1>
                    <Form.Group className="mb-3" controlId="formBasicUsername">
-                   <Form.Control type="text" placeholder="Enter ID"  value = {studentID}
+                   <Form.Control type="text" required placeholder="Enter ID"  value = {studentID}
                    onChange={(e) => setstudentID (e.target.value)} />
                   </Form.Group>
                 <br/>
                
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                     <Form.Control type="text" placeholder="Enter Name"  value = {name}
+                     <Form.Control type="text" required placeholder="Enter Name"  value = {name}
                      onChange={(e) => setname (e.target.value)} />
      
                 </Form.Group>
 
                 <br/>
                <Form.Group className="mb-3" controlId="formBasicPhoneno">
-                    <Form.Control type="email" placeholder="Enter email"  value = {email}
+                    <Form.Control type="email" required placeholder="Enter email"  value = {email}
                     onChange={(e) => setemail (e.target.value)} />
      
                </Form.Group>
                 <br/>
                 
                <Form.Group className="mb-3" controlId="formBasicPassword">
-               <Form.Control type="number" placeholder="Contact Number" maxlength="10" value = {contactNumber}
+               <Form.Control type="number" required placeholder="Contact Number" maxlength="10" value = {contactNumber}
                   onChange={(e) => setcontactNumber (e.target.value)}/>
                </Form.Group>
  
               <br/>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-               <Form.Control type="password" placeholder="Password" value = {password}
+               <Form.Control type="password" required placeholder="Password" value = {password}
                   onChange={(e) => setpassword (e.target.value)}/>
                </Form.Group><br/>
       
