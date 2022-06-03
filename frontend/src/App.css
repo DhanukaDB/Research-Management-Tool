@@ -163,3 +163,6 @@ input {
      width: 100%;
   }
 }
+.page-body-content {
+    min-height: 70vh;
+  }

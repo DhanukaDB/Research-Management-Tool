@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
+
 mongoose.connect(URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -27,15 +28,19 @@ connection.once("open", () => {
 
 app.use('/api/auth', require('./routes/authenticationRoutes'));
 //give feedback for the topics
-app.use("/api/sendFeedback", require("./routes/evaluationTopics"));
+//app.use("/api/sendFeedback", require("./routes/evaluationTopics"));
+
+//give feedback for the topics
+
+app.use("/api/sendFeedback", require("./routes/topicEvaluateRoutes"));
 //Group Router
-app.use("/api/group", require("./routes/groups"));
+app.use("/api/group", require("./routes/groupRoutes"));
 
 //Evaluated docs Router
-app.use("/api/evaluateDocs", require("./routes/evaluateDocs"));
+app.use("/api/evaluateDocs", require("./routes/docsEvaluateRoutes"));
 
 //Evaluated presentations Router
-app.use("/api/evaluatePres", require("./routes/evaluatePresentations"));
+app.use("/api/evaluatePres", require("./routes/presentationEvaRoutes"));
 
 //marking schemes uploading and downloading
 app.use(express.static(path.join(__dirname, '..', 'build')));
@@ -44,15 +49,27 @@ app.use(fileRoute);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
-
 //Student Document Submission Router
-const submissionRouter = require("./routes/submission");
-app.use("/submission", submissionRouter);
+//const submissionRouter = require("./routes/submission");
+//app.use("/submission", submissionRouter);
 
-const port = process.env.PORT;
+
+// //Student Document Submission Router
+// const submissionRouter = require("./routes/submission");
+// app.use("/submission", submissionRouter);
+
+//student upload
+app.use('/api/studentUpload', require('./routes/studentUpload'));
+app.get('*', (req, res) => {
+  res.sendstudentUpload(path.join(__dirname, '..', 'build', 'index.html'));
+});
+
+
+const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
 })
 
 //Chat
 new Chat(server).init();
+
