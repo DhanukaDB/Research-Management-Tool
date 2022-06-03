@@ -4,10 +4,11 @@ import { Box, Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
 export default function CreateChatGroups() {
+
     return (
         <div>
             <h2>Create Student Groups</h2>
-            <div className='container-card'>
+            <div className='groups'>
                 <Box
                     sx={{
                         display: 'flex',
@@ -16,13 +17,14 @@ export default function CreateChatGroups() {
                     }}
                 >
                     <TextField id="group-id" label="Group ID" />
-                    <TextField id="supervisor" label="Supervisor Name" />
-                    <TextField id="co-supervisor" label="Co-supervisor Name" />
-                    <TextField id="member-1" label="member-1 Name" />
-                    <TextField id="member-2" label="member-2 Name" />
-                    <TextField id="member-3" label="member-3 Name" />
-                    <TextField id="member-4" label="member-4 Name" />
+                    <TextField id="supervisor" label="Supervisor ID" />
+                    <TextField id="co-supervisor" label="Co-supervisor ID" />
                 </Box>
+                <h2>Members:</h2>
+                <div>member-1:</div>
+                <div>member-2:</div>
+                <div>member-3:</div>
+                <div>member-4:</div>
             </div>
             <Button variant="contained"> Create Groups</Button>
         </div>

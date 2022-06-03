@@ -23,7 +23,6 @@ const App = () => {
           <Route exact path="/" element={<Home />} ></Route>
           <Route exact path="/adminpanel" element={<Admin />} ></Route>
           <Route exact path="/chat" element={<Chat />} />
-          <Route exact path="/group" element={<CreateChatGroups />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/AddmarksDocs" element={<AddmarksDocs />} />
           <Route path="/EvaluationsHome" element={<EvaluationsHome />} />
@@ -33,6 +32,7 @@ const App = () => {
           <Route path="/MarkingUploading" element={<MarkingUploading />} />
           <Route path="/FilesList" element={<FilesList />} />
           <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
+          <Route path="/group" element={<CreateChatGroups />} />
         </Routes>
       </Router>
     </>

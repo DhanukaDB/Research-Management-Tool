@@ -1,12 +1,7 @@
-.sidebar-container{
-    width: 25vw;
-    height: 100vh;
-    background-color: rgb(216, 224, 232);
-}
-.chat-box-heading{
-    color: rgb(4, 4, 4);
-    font-size: 1.5rem;
-    text-align: center;
-    justify-content: center;
-    padding-top: 4%;
+.drawer{
+    border: 1px solid;
+    width: 300px;
+    height: 98vh;
+    float: left;
+    margin: 2px;
 }
