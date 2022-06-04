@@ -10,7 +10,7 @@ export default function Nav() {
     const [value, setValue] = useState();
     const theme = useTheme();
     const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-    const ITEMS = ["home", "chat", "group", "submissions", "Evaluations"];
+    const ITEMS = ["home", "chat-home", "group", "submissions", "Evaluations"];
 
     return (
         <React.Fragment>
