@@ -46,7 +46,7 @@ export default function GroupRegistrationForm(){  //adding function
  <div className="container">
    
 
-<br/><br/><br/><br/>
+<br/><br/>
 
 <div className="greg">
    <div className="greg1">
@@ -148,10 +148,12 @@ export default function GroupRegistrationForm(){  //adding function
  
   
   <br/>
-  <center>
-  <Button type="submit"  class="btn btn-primary btn-lg btn-block" >Submit</Button>  
-  </center>
-   
+  <div className="d-grid gap-2">
+  <Button variant="primary" size="lg" type="submit">
+  Submit
+  </Button>
+  </div>
+    
    
  
     
