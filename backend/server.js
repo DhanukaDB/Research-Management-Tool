@@ -5,8 +5,7 @@ const mongoose = require("mongoose");
 const path = require('path');
 const fileRoute = require('./routes/markinguploads')
 require("dotenv").config();
-const Chat = require('./modules/chat/chat');
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/chatRegisterRoutes");
 const messageRoute = require("./routes/messageRoutes");
 const socket = require('socket.io');
 
@@ -73,9 +72,6 @@ const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
 })
-
-//Chat
-//new Chat(server).init();
 
 //web sockets
 const io = socket(server, {

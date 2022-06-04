@@ -77,7 +77,7 @@ export default function Register() {
       <div className='form-container'>
         <form onSubmit={(event) => handleSubmit(event)}>
           <div className='brand'>
-            <h1>Chat APP</h1>
+            <h1>Chat Registation</h1>
           </div>
           <input type="text" placeholder="IT Number" name="username" onChange={(e) => handleChange(e)} />
           <input type="email" placeholder="Email" name="email" onChange={(e) => handleChange(e)} />
