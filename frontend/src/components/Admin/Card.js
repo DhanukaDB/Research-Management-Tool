@@ -6,7 +6,7 @@ import './Card.css';
 function Card(props){
     return (
         <Link to={props.navigate}>
-            <div className="card">
+            <div className="card1">
                 <img src = {props.img}
                 alt="admin_home_img" />
                 <p>{props.name}</p>

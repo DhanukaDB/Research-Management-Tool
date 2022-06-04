@@ -7,11 +7,7 @@ import { Form, Button, Container, Row } from "react-bootstrap";
 
 const StudentSignin = (props) => {
 
-  useEffect(() => {
-    if (localStorage.getItem("authToken")) {
-      window.location("/");
-    }
-  }, []);
+
 
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -116,7 +112,7 @@ const StudentSignin = (props) => {
             <br />
             <br />
             <br />
-            <Image src="#" fluid />
+            {/* <Image src="#" fluid /> */}
           </Col>
         </Row>
       </Container>

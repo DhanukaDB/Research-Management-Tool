@@ -4,6 +4,7 @@ const cardDetails = [
         img : "https://img.favpng.com/25/7/19/users-group-computer-icons-png-favpng-WKWD9rqs5kwcviNe9am7xgiPx.jpg",
         name : "USERS HANDLING",
         navigate : "/users"
+        
     },
     {
         id : 2,
@@ -21,7 +22,7 @@ const cardDetails = [
         id : 4,
         img : "https://th.bing.com/th/id/OIP.-41dWaxWvmsQQqM-E9OfLAHaD-?pid=ImgDet&w=612&h=328&rs=1",
         name : "VIEW ROLES",
-        navigate : "/roles"
+        navigate : "/stafflist"
     }, 
     {
         id : 5,
@@ -35,17 +36,6 @@ const cardDetails = [
         name : "UPOLAD TEMPLATES",
         navigate : "/templates"
     },
-    {
-        id : 8,
-        img : "https://th.bing.com/th/id/OIP.kACRQ0QDS7qQkReRqo3RtgHaE8?pid=ImgDet&rs=1",
-        name : "CLIENTS",
-        navigate : "/RegisterTopics"
-    },
-    {
-        id : 9,
-        img : "https://thumbs.dreamstime.com/z/man-using-laptop-feedback-management-concept-screen-feedback-management-concept-laptop-132154893.jpg",
-        name : "FEEDBACK",
-        navigate : "/"
-    }
+   
 ];
 export default cardDetails;

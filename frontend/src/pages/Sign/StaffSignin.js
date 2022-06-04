@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import {Col,Image} from "react-bootstrap";
 import { useState,useEffect} from 'react';
 import axois from "axios";
@@ -7,11 +7,13 @@ import{Form,Button,Container,Row} from "react-bootstrap";
 
 
 const StaffSignin = (props) => {
-   
+
+   const navigate = useNavigate();
   useEffect(()=>{
 
     if(localStorage.getItem("authToken")){
-      window.location("/");
+      
+      navigate("/");
     }
   },[])
       const [email,setemail] = useState("")
@@ -117,10 +119,10 @@ const StaffSignin = (props) => {
             <br />
             <br />
             <br />
-            <Image
+            {/* <Image
               src="#"
               fluid
-            />
+            /> */}
           </Col>
         </Row>
       </Container>
