@@ -1,72 +1,72 @@
 const Admin = require("../models/Admin");
 
-exports.getAdmin = async (req, res) => {
-    const id = req.user._id;
-  
-    try {
-      const Admin = await Admin.findById({ _id: id });
-      res.status(200).send({ Admin: Admin });
-  
-      return true;
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        desc: "Error in adding todo -" + error,
-      });
-    }
-  };
+exports.updateAdminProfile = async (req,res) => {
+  const {email,phoneno,password} = req.body;
 
-  exports.updateAdmin = async (req, res) => {
-    const { username, email, fileEnc } = req.body;
-    let Admin;
-    try {
-      if (fileEnc) {
-        const uploadedResponse = await cloudinary.uploader.upload(fileEnc, {
-          upload_preset: "Newsletter_Covers",
-        });
-        Admin = await Admin.findByIdAndUpdate(
-          req.user._id,
+  try{
+      const newData = {
+          
+          email,
+          phoneno,
+          password
+      };
+
+      const updatedAdmin = await Admin.findByIdAndUpdate(
+          req.user.id,
+          newData,
           {
-            $set: {
-              username,
-              email,
-              profilePicture: {
-                imagePublicId: uploadedResponse.public_id,
-                imageSecURL: uploadedResponse.secure_url,
-              },
-            },
-          },
-          {
-            new: true,
-            upsert: false,
-            omitUndefined: true,
+              new:true,
+              upsert:false,
+              omitUndefined:true
           }
-        );
-      } else {
-        Admin = await Admin.findByIdAndUpdate(
-          req.user._id,
-          {
-            $set: {
-              username,
-              email,
-            },
-          },
-          {
-            new: true,
-            upsert: false,
-            omitUndefined: true,
-          }
-        );
-      }
+      );
       res.status(200).send({
-        success: true,
-        desc: "Admin account updated successfully",
-        Admin,
+          success:true,
+          desc: "admin update successfully",
+          updatedAdmin,
       });
-    } catch (error) {
+  }catch(error){
       res.status(500).json({
-        success: false,
-        desc: "Error in update Admin account " + error,
+          success:false,
+          desc:"Error in updating admin profile controller " +error,
       });
-    }
-  };
+  }
+};
+
+//delete admin profile
+exports.deleteAdminProfile = async(req,res) =>{
+
+  if (!mongoose.Types.ObjectId.isValid(req.user._id))
+      return res.status(404).send(`No Admin with id: ${req.user._id}`);
+
+  try {
+      await Student.findByIdAndRemove(req.user._id);
+      const deletedStudent = await DeletedAdminModel.create({
+          email:req.user._id
+      });
+     
+      res.status(200).send({
+          success: true,
+          desc: "admin deleted successfully",
+          deletedAdmin,
+
+      });
+  } catch (error) {
+      res.status(500).json({
+          success: false,
+          desc: "Error in delete Student Profile controller-" + error,
+      });
+  }
+
+
+};
+
+
+exports.home =  (req,res) =>{
+  
+          res.status(200).json({
+             success:true,
+          data:"access granted "
+      })
+          
+};
