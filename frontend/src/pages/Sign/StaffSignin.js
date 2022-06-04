@@ -12,8 +12,8 @@ const StaffSignin = (props) => {
   useEffect(()=>{
 
     if(localStorage.getItem("authToken")){
-      
-      navigate("/");
+
+      navigate("`/supervisor");
     }
   },[])
       const [email,setemail] = useState("")
@@ -45,7 +45,7 @@ const StaffSignin = (props) => {
              alert("Login Success");
 
               localStorage.setItem("authToken", res.data.token);
-            //  localStorage.setItem("userRole", res.data.user.role);
+              localStorage.setItem("userRole", res.data.user.role);
 
              window.location = `/`;
 

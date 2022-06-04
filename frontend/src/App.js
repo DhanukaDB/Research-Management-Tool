@@ -61,8 +61,6 @@ const App = () => {
           <Route path="/AcceptRejectTopics/:id" element={<AcceptRejectTopics />} />
 
           <Route path="/TopicAccept" element={<TopicAccept />} />
-
-          <Route exact path="/submission" element={<DocumentSubmission />} ></Route>
           <Route exact path="/groupreg" element={<GroupRegistrationForm />} ></Route>
 
 
