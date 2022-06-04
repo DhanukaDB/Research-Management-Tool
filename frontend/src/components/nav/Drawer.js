@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Drawer() {
     const [openDrawer, setOpenDrawer] = useState(false);
-    const ITEMS = ["Home", "Register", "Login", "Group", "Chat", "Logout"];
+    const ITEMS = ["Register", "Login", "Group", "Chat", "Logout"];
 
     return (
         <React.Fragment>
@@ -15,6 +15,7 @@ export default function Drawer() {
                             <ListItemButton onClick={() => setOpenDrawer(false)} key={index}>
                                 <ListItemIcon>
                                     <ListItemText>{page}</ListItemText>
+                                    {/* {page === "Logout" && <ListItemText onClick={alert("LOGOUT PRESSED")}>{page}</ListItemText>} */}
                                 </ListItemIcon>
                             </ListItemButton>
                         ))

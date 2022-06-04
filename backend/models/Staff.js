@@ -20,6 +20,11 @@ const staffSchema = new Schema({
          unique: true,
          require: true
    },
+
+   researchfield:{
+        type: String,
+        require: true
+   },
    
    role :{
     type: String,

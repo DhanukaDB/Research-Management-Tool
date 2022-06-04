@@ -5,7 +5,7 @@ const Student = require("../models/Student");
 exports.registerStudent = async (req, res, next) => {
   const { studentID, name, email, contactNumber, password, ppEnc } = req.body;
   // let existingEmail = await findEmailDuplicates(email, res);
-  //if (existingEmail === null)
+   //if (existingEmail === null)
 
   try {
     // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
@@ -20,7 +20,7 @@ exports.registerStudent = async (req, res, next) => {
     });
     sendToken(student, 200, res);
     // const token = await Student.getSignedToken();
-    res.status(201).json({ success: true, token, role: "student" });
+    // res.status(201).json({ success: true, token, role: "student" }); <------
   } catch (error) {
     res.status(500).json({
       error,
@@ -30,9 +30,9 @@ exports.registerStudent = async (req, res, next) => {
 };
 
 exports.registerStaff = async (req, res, next) => {
-  const { staffID, name, email, password, role } = req.body;
+  const { staffID, name, email,researchfield, password, role } = req.body;
   // let existingEmail = await findEmailDuplicates(email, res);
-  //if (existingEmail === null)
+  // if (existingEmail === null)
 
   try {
     // const ppUploadRes = await cloudinary.uploader.upload(ppEnc, {
@@ -42,6 +42,7 @@ exports.registerStaff = async (req, res, next) => {
       staffID,
       name,
       email,
+      researchfield,
       password,
       role,
     });
@@ -70,7 +71,7 @@ exports.registerAdmin = async (req, res, next) => {
       phoneno,
       password,
     });
-    // const token = await Admin.getSignedToken();
+     const token = await Admin.getSignedToken();
     sendToken(admin, 201, res);
   } catch (error) {
     res.status(500).json({
@@ -157,7 +158,7 @@ exports.staffLogin = async (req, res, next) => {
 };
 
 exports.adminLogin = async (req, res, next) => {
-  const { email, password, role } = req.body;
+  const { email, password } = req.body;
 
   if (!email || !password) {
     res.status(400).json({
