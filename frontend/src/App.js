@@ -13,8 +13,14 @@ import Admin from './components/Admin/AdminHome';
 // import MarkingUploading from './components/MarkingSchemesUploading/MarkingUploading';
 // import FilesList from './components/MarkingSchemesUploading/FilesList';
 
-// import DocumentSubmission from'./components/DocumentSubmission';
-
+   import DocumentSubmission from'./components/DocumentSubmission';
+   import GroupRegistrationForm from './components/GroupRegistrationForm';
+   import StudentUpoadList from './components/StudentUploadList';
+   import StudentUpload from './components/StudentUpload';
+   import SubmissionUploading from './components/AdminCreateSubmission/SubmissionUploading';
+   import AdminSubList from './components/AdminCreateSubmission/AdminSubList';
+   import AdminCreateTemplate from './components/Template/AdminCreateTemplate';
+   import DownloadTemplate from './components/Template/DownloadTemplate';
 
 import StudentSignup from './pages/Sign/StudentSignup' ;
 import StudentSignin from './pages/Sign/StudentSignin';
@@ -41,7 +47,17 @@ const App = () => {
           {/* <Route path="/EvaluationTopics" element={<EvaluationTopics />} /> */}
           {/* <Route path="/MarkingUploading" element={<MarkingUploading />} /> */}
           {/* <Route path="/FilesList" element={<FilesList />} /> */}
-          {/* <Route exact path="/submission" element={<DocumentSubmission />} ></Route> */}
+
+         
+          <Route exact path="/submissions" element={<DocumentSubmission />} ></Route> 
+          <Route exact path="/groupreg" element={<GroupRegistrationForm/>} ></Route>
+          <Route exact path="/sUploadList" element={<StudentUpoadList/>} ></Route>
+          <Route exact path="/studentUpload" element={<StudentUpload/>} ></Route>
+          <Route path="/SubmissionUploading" element={<SubmissionUploading/>} />
+          <Route path="/AdminSubList" element={<AdminSubList />} /> 
+          <Route path="/downloadTemp" element={<DownloadTemplate/>} />
+          <Route path="/createTemp" element={<AdminCreateTemplate />} />  
+          
           <Route exact path="/studentsignup" element={<StudentSignup />} ></Route>
           <Route exact path="/studentsignin" element={<StudentSignin />} ></Route>
           <Route exact path="/staffsignup" element={<StaffSignup />} ></Route>
