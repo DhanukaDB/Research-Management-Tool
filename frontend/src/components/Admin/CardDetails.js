@@ -22,7 +22,7 @@ const cardDetails = [
         id : 4,
         img : "https://th.bing.com/th/id/OIP.-41dWaxWvmsQQqM-E9OfLAHaD-?pid=ImgDet&w=612&h=328&rs=1",
         name : "VIEW ROLES",
-        navigate : "/stafflist"
+        navigate : "/research-area"
     }, 
     {
         id : 5,

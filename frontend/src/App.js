@@ -29,7 +29,7 @@ import AdminSignin from './pages/Sign/AdminSignin';
 import StaffList from './pages/screens/Stafflist';
 import StudentList from './pages/screens/StudentList';
 import StaffHome from './pages/screens/StaffHome';
-import Supervisor from './pages/screens/SupervisorHome';
+import SupervisorHome from './pages/screens/SupervisorHome';
 import PannelMember from './pages/screens/PannelMemberHome';
 import UserData from './pages/screens/UserData';
 
@@ -70,11 +70,11 @@ const App = () => {
           <Route exact path="/staffsignin" element={<StaffSignin />} ></Route>
           <Route exact path="/adminsignin" element={<AdminSignin />} ></Route>
 
-          <Route exact path="/stafflist" element={<StaffList />} ></Route>
+          <Route exact path="/research-area" element={<StaffList />} ></Route>
           <Route exact path="/studentlist" element={<StudentList />} ></Route>
           <Route exact path="/staffhome" element={<StaffHome />} ></Route>
           <Route exact path="/pannelmember" element={<PannelMember />} ></Route>
-          <Route exact path="/supervisor" element={<Supervisor />} ></Route>
+          <Route exact path="/supervisor" element={<SupervisorHome />} ></Route>
           <Route exact path="/users" element={<UserData />} ></Route>
 
 

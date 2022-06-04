@@ -13,7 +13,7 @@ const StaffSignin = (props) => {
 
     if(localStorage.getItem("authToken")){
 
-      navigate("`/supervisor");
+      navigate("/staffhome");
     }
   },[])
       const [email,setemail] = useState("")
@@ -47,7 +47,7 @@ const StaffSignin = (props) => {
               localStorage.setItem("authToken", res.data.token);
               localStorage.setItem("userRole", res.data.user.role);
 
-             window.location = `/`;
+              navigate("/staffhome");
 
               setemail("");
               setpassword("");

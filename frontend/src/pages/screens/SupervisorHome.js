@@ -1,8 +1,9 @@
 import React from "react";
 import Nav from '../../components/nav/Nav';
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
-export default function Supervisor() {
+export default function SupervisorHome() {
   return (
     <div>
       <Nav />

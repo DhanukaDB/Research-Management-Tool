@@ -11,7 +11,7 @@ export default function EvaluationsHome() {
    <br></br>
    <br></br>
         <div>
-            <h1>
+           <center> <h1>
                 Evaluations
             </h1>
             <Button href="/EvaluationTopics"color="inherit">Topics Evaluation</Button>
@@ -20,7 +20,7 @@ export default function EvaluationsHome() {
 
             <Button href = "/EvaluationPres" color="inherit">Presentations Evaluation</Button>
 
-
+            </center>
         </div>
         </>
     )

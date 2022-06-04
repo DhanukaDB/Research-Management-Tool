@@ -9,7 +9,7 @@ export default function Nav() {
   const [value, setValue] = useState();
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  const ITEMS = ["home", "chat", "group", "submissions", "Evaluations"];
+  const ITEMS = ["home", "chat", "group", "submissions", "research-area"];
 
   const logout = () => {
     if (localStorage.getItem("authToken") && localStorage.getItem("userRole")) {
@@ -41,9 +41,16 @@ export default function Nav() {
                     ))
                   }
                 </Tabs>
-                <Button href="/EvaluationsHome"  sx={{ marginLeft: "20px" }} variant='contained'>Evaluations</Button>
+               
+                {localStorage.getItem("authToken") && (
+                  <Button href="/EvaluationsHome"  sx={{ marginLeft: "20px" }} variant='contained'>Evaluations</Button>
+                )}
+                 {localStorage.getItem("authToken") && (
+                    <Button href="/Cosupervisorsreq" sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>CO SU Req</Button>
+                )}
+               
 
-                <Button href="/Cosupervisorsreq" sx={{ marginLeft: "1%", marginRight: "4%" }} variant='contained'>CO SU Req</Button>
+             
                
                
                 {!localStorage.getItem("authToken") && (

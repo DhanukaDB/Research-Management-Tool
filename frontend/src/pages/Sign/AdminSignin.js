@@ -3,11 +3,13 @@ import { Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axois from "axios";
 import { Form, Button, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const AdminSignin = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
-      window.location("/");
+      
     }
   }, []);
 
@@ -45,7 +47,7 @@ const AdminSignin = () => {
         setemail("");
         setpassword("");
 
-        window.location = `/adminpanel`;
+        navigate(`/adminpanel`);
       })
       .catch((err) => {
         alert(err);
