@@ -84,7 +84,7 @@ export default function Register() {
           <input type="passowrd" placeholder="Password" name="password" onChange={(e) => handleChange(e)} />
           <input type="passowrd" placeholder="Confirm Password" name="confirmPassword" onChange={(e) => handleChange(e)} />
 
-          <button type="submit">Create User</button>
+          <button type="submit">Add Users To Chat</button>
           <span>
             Already have an account? <Link to="/login">Login</Link>
           </span>
