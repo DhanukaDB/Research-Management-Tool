@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 //Add Group details
 exports.addGroup = async (req, res) => {
-    const {studentID1 ,studentID2,studentID3 ,studentID4 ,field ,supervisorName,coSupName,topic} = req.body;
+    const {studentID1 ,studentID2,studentID3 ,studentID4 ,field ,supervisorName,coSupName,status,topic} = req.body;
     
     try {
        const newGroup = new Group({
@@ -14,6 +14,7 @@ exports.addGroup = async (req, res) => {
         field,
         supervisorName,
         coSupName,
+        status,
         topic   
     })
     
@@ -37,7 +38,7 @@ exports.addGroup = async (req, res) => {
 
   //update Student Group
 exports.updateGroup = async (req,res) => {
-    const {studentID1 ,studentID2,studentID3 ,studentID4 ,field ,supervisorName,coSupName,topic} = req.body;
+    const {studentID1 ,studentID2,studentID3 ,studentID4 ,field ,supervisorName,coSupName,status,topic} = req.body;
     let groupId = req.params.id;
     try{
         const updateGroup = {
@@ -48,6 +49,7 @@ exports.updateGroup = async (req,res) => {
             field,
             supervisorName,
             coSupName,
+            status,
             topic
         }
 

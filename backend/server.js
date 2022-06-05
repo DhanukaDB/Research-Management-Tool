@@ -30,11 +30,14 @@ connection.once("open", () => {
 });
 
 app.use('/api/auth', require('./routes/authenticationRoutes'));
+app.use('/api/student', require('./routes/studentRoutes'));
+app.use('/api/staff', require('./routes/staffRoutes'));
+app.use('/api/admin', require('./routes/adminRoutes'));
+
 //give feedback for the topics
 //app.use("/api/sendFeedback", require("./routes/evaluationTopics"));
 
 //give feedback for the topics
-
 app.use("/api/sendFeedback", require("./routes/topicEvaluateRoutes"));
 //Group Router
 app.use("/api/group", require("./routes/groupRoutes"));
@@ -55,11 +58,6 @@ app.get('*', (req, res) => {
 //Student Document Submission Router
 //const submissionRouter = require("./routes/submission");
 //app.use("/submission", submissionRouter);
-
-
-// //Student Document Submission Router
-// const submissionRouter = require("./routes/submission");
-// app.use("/submission", submissionRouter);
 
 //student upload
 app.use('/api/studentUpload', require('./routes/studentUpload'));

@@ -12,6 +12,7 @@ function ReqCosupervisor() {
   const [field, setfield] = useState("");
   const [supervisorName, setsupervisorName] = useState("");
   const [topic, settopic] = useState("");
+  const [status, setstatus] = useState("");
   const [coSupName, setcoSupName] = useState("");
 
   //retrieve relevent data form relavent fields
@@ -29,6 +30,7 @@ function ReqCosupervisor() {
         setfield(res.data.group.field);
         setsupervisorName(res.data.group.supervisorName);
         settopic(res.data.group.topic);
+        setstatus(res.data.group.status);
         setcoSupName(res.data.group.coSupName);
       })
       .catch((err) => {
@@ -48,11 +50,14 @@ function ReqCosupervisor() {
       field,
       supervisorName,
       topic,
+      status,
       coSupName
     }
 
     axios.put(`http://localhost:5000/api/group//update/${id}`, updateDetails).then(() => {
-      alert("Request sucessfully");
+      alert("Sent sucessfully");
+      window.location = `/Cosupervisorsreq`;
+
     }).catch((err) => {
       alert(err);
     })
@@ -165,12 +170,25 @@ function ReqCosupervisor() {
             }}disabled
           />
         </div> */}
+         <div className="form-group">
+            <label htmlFor="exampleInputCategory">Status</label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputexpenseCategory1"
+              value={status}
+              onChange={(e) => {
+                setstatus(e.target.value);
+              }} disabled
+            />
+            </div>
           <div className="form-group">
             <label for="exampleInputmonth">Request Co Supervisor</label>
             <select id="inputState" className="form-control" onChange={(e) => {
-              setcoSupName(e.target.value);
+              setcoSupName(e.target.value); 
             }}>
               <option value={coSupName}></option>
+              <option value="First, find a suitable topic">Rejected</option>
               <option value="Ms. Hansi">Ms. Hansi</option>
               <option value="Mr. Nalaka">Mr. Nalaka</option>
               <option value="Dr. Dilshan">Dr. Dilshan</option>
@@ -181,11 +199,10 @@ function ReqCosupervisor() {
             </select>
           </div>
           <button type="submit" className="btn btn-success">
-            Request
+            Send
           </button>
           &nbsp;
 
-          <button className="btn btn-danger">CANCEL</button>
 
         </form>
       </div>

@@ -37,6 +37,7 @@
     "styled-components": "^5.3.5",
     "tostify": "^0.0.1",
     "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-to-pdf": "0.0.14"
   }
 }

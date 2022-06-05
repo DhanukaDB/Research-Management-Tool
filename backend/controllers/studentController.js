@@ -26,14 +26,14 @@ exports.getStudentProfile = async (req,res) =>{
 
 //update cutomer profile
 exports.updateStudentProfile = async (req,res) => {
-    const {username,email,address,phone} = req.body;
+    const {name,email,contactNumber,password} = req.body;
 
     try{
         const newData = {
-            username,
+            name,
             email,
-            address,
-            phone
+            contactNumber,
+            password
         };
 
         const updatedstudent = await Student.findByIdAndUpdate(
@@ -87,11 +87,13 @@ exports.deleteStudentProfile = async(req,res) =>{
 };
 
 
-exports.home =  (req,res) =>{
+exports.allProfiles =  (req,res) =>{
     
-            res.status(200).json({
-               success:true,
-            data:"access granted "
-        })
-            
+    Student.find().then((Students) => {
+        res.json(Students)
+
+    }).catch((err) => {
+        console.log(err)
+    })
+    
 };

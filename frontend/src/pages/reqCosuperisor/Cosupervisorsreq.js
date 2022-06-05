@@ -39,64 +39,64 @@ export default function Cosupervisorsreq() {
 
 
 
-//   function createPdf() {
+  //   function createPdf() {
 
-//     var doc = new jsPDF('portrait', 'px', 'a3');
-//     var totalPagesExp = "{total_pages_count_string}"; //placeholder for total number of pages 
-//     doc.autoTable({
-//       didDrawPage: function (data) {
+  //     var doc = new jsPDF('portrait', 'px', 'a3');
+  //     var totalPagesExp = "{total_pages_count_string}"; //placeholder for total number of pages 
+  //     doc.autoTable({
+  //       didDrawPage: function (data) {
 
-//         // Header
-//         doc.setFontSize(16);
-//         var fileTitle = "Research Presenations Marks";
+  //         // Header
+  //         doc.setFontSize(16);
+  //         var fileTitle = "Research Presenations Marks";
 
-//         doc.text(fileTitle, 40, 100);
+  //         doc.text(fileTitle, 40, 100);
 
 
-//         // Footer
-//         var pageSize = doc.internal.pageSize;
-//         //jsPDF 1.4+ uses getHeight, <1.4 uses .height
-//         var pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight();
-//         // jsPDF 1.4+ uses getWidth, <1.4 uses .width
-//         var pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth();
+  //         // Footer
+  //         var pageSize = doc.internal.pageSize;
+  //         //jsPDF 1.4+ uses getHeight, <1.4 uses .height
+  //         var pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight();
+  //         // jsPDF 1.4+ uses getWidth, <1.4 uses .width
+  //         var pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth();
 
-//         doc.autoTable({
-//           html: '#my-table',
-//           startY: pageHeight - 760,
-//           theme: 'grid'
-//         });
+  //         doc.autoTable({
+  //           html: '#my-table',
+  //           startY: pageHeight - 760,
+  //           theme: 'grid'
+  //         });
 
-//         var str = "Page " + doc.internal.getNumberOfPages()
-//         // Total page number plugin only available in jspdf v1.0+
-//         if (typeof doc.putTotalPages === 'function') {
-//           str = str + " of " + totalPagesExp;
-//         }
-//         doc.setFontSize(10);
-//         doc.text(str, data.settings.margin.left, pageHeight - 10);
-//       },
-//       margin: {
-//         bottom: 60, //this decides how big your footer area will be
-//         top: 40 //this decides how big your header area will be.
-//       }
-//     });
-//     // Total page number plugin only available in jspdf v1.0+
-//     if (typeof doc.putTotalPages === 'function') {
-//       doc.putTotalPages(totalPagesExp);
-//     }
+  //         var str = "Page " + doc.internal.getNumberOfPages()
+  //         // Total page number plugin only available in jspdf v1.0+
+  //         if (typeof doc.putTotalPages === 'function') {
+  //           str = str + " of " + totalPagesExp;
+  //         }
+  //         doc.setFontSize(10);
+  //         doc.text(str, data.settings.margin.left, pageHeight - 10);
+  //       },
+  //       margin: {
+  //         bottom: 60, //this decides how big your footer area will be
+  //         top: 40 //this decides how big your header area will be.
+  //       }
+  //     });
+  //     // Total page number plugin only available in jspdf v1.0+
+  //     if (typeof doc.putTotalPages === 'function') {
+  //       doc.putTotalPages(totalPagesExp);
+  //     }
 
-//     doc.save('marks.pdf'); //this downloads a copy of the pdf in your local instance.
-//   };
-//   function deletePre(_id) {
-//     axios.delete(`http://localhost:5000/api/evaluatePres/delete/${_id}`)
-//       .then((res) => {
-//         //console.log(res.data);
-//         window.location = `/EvaluationPres`;
-//       })
+  //     doc.save('marks.pdf'); //this downloads a copy of the pdf in your local instance.
+  //   };
+  //   function deletePre(_id) {
+  //     axios.delete(`http://localhost:5000/api/evaluatePres/delete/${_id}`)
+  //       .then((res) => {
+  //         //console.log(res.data);
+  //         window.location = `/EvaluationPres`;
+  //       })
 
-//       .catch((error) => {
-//         alert(`Failed to delete the product\n${error.message}`)
-//       })
-//   }
+  //       .catch((error) => {
+  //         alert(`Failed to delete the product\n${error.message}`)
+  //       })
+  //   }
 
 
   return (
@@ -110,11 +110,11 @@ export default function Cosupervisorsreq() {
           <h1> Group Details</h1>
         </center>
         <hr />
-        <br/>
+        <br />
         <input className="search1"
           style={{ width: "10%", height: "30px" }}
           type="text"
-          placeholder=" Presentation Title "
+          placeholder="Student 1 ID "
           onChange={(e) => setSearchTitle(e.target.value)} />
 
 
@@ -129,6 +129,7 @@ export default function Cosupervisorsreq() {
               <th scope="col">Student 4</th>
               <th scope="col">Field</th>
               <th scope="col">Supervisor</th>
+              <th scope="col">Status</th>
               <th scope="col"> Co Supervisor</th>
               <th scope="col"> </th>
             </tr>
@@ -143,7 +144,7 @@ export default function Cosupervisorsreq() {
               .filter((value) => {
                 if (searchtitle === "") {
                   return value;
-                } else if (value.topic?.toLowerCase().includes(searchtitle.toLowerCase())) {
+                } else if (value.studentID1?.toLowerCase().includes(searchtitle.toLowerCase())) {
 
                   return value;
                 }
@@ -160,16 +161,16 @@ export default function Cosupervisorsreq() {
                   <td className="presentationmarks">{reqCo.studentID4}</td>
                   <td className="presentationmarks">{reqCo.field}</td>
                   <td className="presentationmarks">{reqCo.supervisorName}</td>
+                  <td className="presentationmarks">{reqCo.status}</td>
                   <td className="presentationmarks">{reqCo.coSupName}</td>
                   <td>
-                  <Link
-              to={`/ReqCosupervisor/${reqCo._id}`}
-              className="btn btn-sm expenseButton"
-            >
-              <UpdateIcon className="btn-icon" style={{color:green[600]}} fontSize="small"/>
-            </Link>
+                    <Link
+                      to={`/ReqCosupervisor/${reqCo._id}`}
+                      className="btn btn-sm expenseButton"
+                    > <UpdateIcon className="btn-icon" style={{ color: green[600] }} fontSize="small" />
+                    </Link>
                     &nbsp;
-                    
+
                   </td>
                 </tr>
               )
