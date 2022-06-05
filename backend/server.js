@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 const path = require('path');
 const fileRoute = require('./routes/markinguploads')
 require("dotenv").config();
-const Chat = require('./modules/chat/chat');
+const userRoutes = require("./routes/chatRegisterRoutes");
+const messageRoute = require("./routes/messageRoutes");
+const socket = require('socket.io');
 
 const URL = process.env.MONGODB_URL;
 
@@ -14,7 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
-
+app.use("/api/auth", userRoutes);
+app.use("/api/messages", messageRoute);
 
 mongoose.connect(URL, {
   useNewUrlParser: true,
@@ -68,6 +71,25 @@ const server = app.listen(port, () => {
   console.log(`server running on ${port}`)
 })
 
-//Chat
-new Chat(server).init();
+//web sockets
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
 
+global.onlineUsers = new Map();
+io.on("connection", (socket) => {
+  global.chatSocket = socket;
+  socket.on("add-user", (userId) => {
+    onlineUsers.set(userId, socket.id);
+  });
+
+  socket.on("send-msg", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    if (sendUserSocket) {
+      socket.to(sendUserSocket).emit("msg-recieve", data.message);
+    }
+  });
+});
